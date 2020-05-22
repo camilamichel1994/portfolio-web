@@ -1,0 +1,19 @@
+const TABS = {
+    PROFILE: 1,
+    POSTS: 2,
+    CONTACTS: 3,
+}
+
+const PROFILE_STYLES = {
+    DEFAULT_CENTER: 1,
+    DEFAULT_LEFT_ALIGNED: 2,
+    COVER_ONLY_CENTER: 3,
+    COVER_ONLY_LEFT_ALIGNED: 4,
+}
+
+const PROFILE = {
+    TABS,
+    PROFILE_STYLES
+}
+
+export default PROFILE
