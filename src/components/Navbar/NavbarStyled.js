@@ -105,6 +105,7 @@ export const SearchInput = styled.input`
     border: none;
     font-weight: lighter;
     outline: none;
+    color: ${({ theme }) => theme.TEXT};
 `
 
 export const SearchIcon = styled(FontAwesomeIcon)`

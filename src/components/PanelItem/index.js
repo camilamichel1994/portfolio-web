@@ -26,7 +26,7 @@ const PanelItem = props => {
                     <Title theme={props.theme}>{props.title}</Title>
                     <Description theme={props.theme}>{props.description}</Description>
                 </InfoWrapper>
-                <ArrowIcon isopen={isOpen.toString()} icon={faAngleDown} />
+                <ArrowIcon theme={props.theme} isopen={isOpen.toString()} icon={faAngleDown} />
             </PanelItemStyled>
             {(isOpen && props.children) &&
                 <ContentArea theme={props.theme}>

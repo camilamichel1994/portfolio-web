@@ -50,6 +50,7 @@ export const InputNative = styled.input`
     border: none;
     border-radius: 5px;
     background: ${({ theme }) => theme.BACKGROUND};
+    color: ${({ theme }) => theme.TEXT};
     width: 100%;
     box-sizing: border-box;
 `

@@ -6,6 +6,7 @@ import { getUser } from './reducers/user-reducer'
 import styled, { createGlobalStyle } from 'styled-components'
 import Home from './containers/Home'
 import Profile from './containers/Profile'
+import CreatePanel from './containers/CreatePanel'
 import Navbar from './components/Navbar'
 import ELEVATION from './constants/elevation'
 
@@ -33,6 +34,7 @@ const Router = () => {
               <Switch>
                   <Route component={Home} path="/" exact />
                   <Route component={Profile} path="/profile" exact />
+                  <Route component={CreatePanel} path="/new-panel" exact />
               </Switch>
             </Wrapper>
         </BrowserRouter>

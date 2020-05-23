@@ -9,6 +9,7 @@ import {
     SearchAddWrapper,
     AddPanelWrapper,
     PanelArea,
+    LinkStyled,
 } from './ProfileTabStyled'
 
 const renderPanels = (panels, theme) => {
@@ -28,7 +29,9 @@ const ProfileTab = props => (
         <SearchAddWrapper>
             <Input theme={props.theme} startIcon={icons['faSearch']} />
             <AddPanelWrapper>
-                <Button title="Add Panel" />
+                <LinkStyled to="/new-panel">
+                    <Button title="Add Panel" />
+                </LinkStyled>
             </AddPanelWrapper>
         </SearchAddWrapper>
         <PanelArea>

@@ -1,5 +1,5 @@
 const SIZE = {
-    TITLE: '40px',
+    TITLE: '32px',
     SUBTITLE: '22px',
     TEXT: '18px',
     SUBTEXT: '14px',

@@ -22,11 +22,11 @@ export const IconBox = styled.div`
 `
 
 export const Icon = styled(FontAwesomeIcon).attrs({ size: '2x' })`
-    color: ${({ theme }) => theme.BACKGROUND};
+    color: ${({ theme }) => theme.TEXT};
 `
 
 export const ArrowIcon = styled(FontAwesomeIcon).attrs({ size: '2x' })`
-    color: ${({ theme }) => theme.BACKGROUND};
+    color: ${({ theme }) => theme.TEXT};
     -webkit-transition-duration: 0.6s;
     -moz-transition-duration: 0.6s;
     -o-transition-duration: 0.6s;
