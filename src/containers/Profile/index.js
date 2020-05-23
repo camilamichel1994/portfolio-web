@@ -24,7 +24,7 @@ import {
 const renderSelectedTab = (index, theme) => {
     switch (index) {
         case PROFILE.TABS.PROFILE:
-            return <ProfileTab theme={theme} />
+            return <ProfileTab panels={panels} theme={theme} />
         case PROFILE.TABS.POSTS:
             return <PostsTab theme={theme} />
         case PROFILE.TABS.CONTACTS:
@@ -61,5 +61,40 @@ const Profile = () => {
         </ProfileStyled>
     )
 }
+
+const panels = [
+    {
+        icon: 'faUser',
+        color: '#D92027',
+        title: 'About me',
+        description: 'Basic information about myself',
+        content: 'Lorem ipsum dolor sit amet',
+        id: 1,
+    },
+    {
+        icon: 'faFolder',
+        color: '#129A7D',
+        title: 'Projects',
+        description: 'A collection of Github repositories',
+        content: 'Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        id: 2,
+    },
+    {
+        icon: 'faGripHorizontal',
+        color: '#D1A958',
+        title: 'Skills',
+        description: 'Things I can do',
+        content: 'Ut enim ad minim veniam.',
+        id: 3,
+    },
+    {
+        icon: 'faCubes',
+        color: '#E12F5F',
+        title: 'Career',
+        description: "Where I've worked at",
+        content: 'Duis aute irure dolor enim ad minim veniam.',
+        id: 4,
+    },
+]
 
 export default Profile

@@ -23,8 +23,8 @@ export const ButtonStyled = styled.div`
     border: ${({ outlined, color, disabled }) => !outlined ? 'none' : `3px ${themeSwitcher(color, disabled)} solid` };
 
     &:hover {
-        box-shadow: 0px 7px 13px -5px ${({ color, disabled }) => themeSwitcher(color, disabled)};
-        -webkit-box-shadow: 0px 7px 13px -5px ${({ color, disabled }) => themeSwitcher(color, disabled)};
+        box-shadow: 0px 7px 13px -5px ${({ color, disabled, outlined }) => themeSwitcher(color, disabled, outlined)};
+        -webkit-box-shadow: 0px 7px 13px -5px ${({ color, disabled, outlined }) => themeSwitcher(color, disabled, outlined)};
         transform: translateY(-4px);
     }
     &:active {
