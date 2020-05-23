@@ -18,6 +18,7 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
+    title: 'Button',
     disabled: false,
     outlined: false,
     color: null,

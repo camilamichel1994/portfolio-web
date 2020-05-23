@@ -28,7 +28,7 @@ const Input = props => {
             }
             <InputStyled isValid={isValid} {...props}>
                 {props.startIcon && <StartIcon icon={props.startIcon} theme={props.theme} isvalid={isValid.toString()} />}
-                <InputNative onChange={e => setIsValid(validate(props.validationRule, e.target.value, props.required, props.validate))} type={props.type || 'text'} />
+                <InputNative theme={props.theme} onChange={e => setIsValid(validate(props.validationRule, e.target.value, props.required, props.validate))} type={props.type || 'text'} />
                 {props.endIcon && <EndIcon icon={props.endIcon} theme={props.theme} isvalid={isValid.toString()} />}
             </InputStyled>
             {(props.helper && isValid) && <Helper theme={props.theme} isValid={isValid}>{props.helper}</Helper>}
@@ -39,25 +39,48 @@ const Input = props => {
 
 const validate = (regex, payload, isRequired, validateToParent = () => {}) => {
     if (payload === '' && isRequired) {
-        validateToParent(false)
+        validateToParent(false, payload)
         return false
     }
     if (payload === '' && !isRequired) {
-        validateToParent(true)
+        validateToParent(true, payload)
         return true
     }
     if (!regex) {
-        validateToParent(true)
+        validateToParent(true, payload)
         return true
     }
     const expression = new RegExp(regex)
     const isRegexValid = expression.test(payload)
-    validateToParent(isRegexValid)
+    validateToParent(isRegexValid, payload)
     return isRegexValid
 }
 
-Input.propTypes = {}
-Input.defaultProps = {}
+Input.propTypes = {
+    label: PropTypes.string,
+    theme: PropTypes.object.isRequired,
+    required: PropTypes.bool,
+    startIcon: PropTypes.object,
+    endIcon: PropTypes.object,
+    validationRule: PropTypes.func,
+    validate: PropTypes.func,
+    type: PropTypes.string,
+    helper: PropTypes.string,
+    errorMessage: PropTypes.string,
+    width: PropTypes.string,
+}
+Input.defaultProps = {
+    label: null,
+    required: false,
+    startIcon: null,
+    endIcon: null,
+    validationRule: undefined,
+    validate: undefined,
+    type: null,
+    helper: null,
+    errorMessage: null,
+    width: null,
+}
 
 export default Input
 

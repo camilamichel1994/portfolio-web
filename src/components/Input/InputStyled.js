@@ -11,6 +11,7 @@ export const InputStyled = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    background: ${({ theme }) => theme.BACKGROUND};
     justify-content: ${({ startIcon, endIcon }) => {
         if (startIcon) return 'flex-start'
         if (endIcon) return 'flex-end'
@@ -20,6 +21,7 @@ export const InputStyled = styled.div`
 export const LabelWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    flex: 1;
 `
 
 export const Label = styled.div`
@@ -47,7 +49,7 @@ export const InputNative = styled.input`
     outline: none;
     border: none;
     border-radius: 5px;
-    
+    background: ${({ theme }) => theme.BACKGROUND};
     width: 100%;
     box-sizing: border-box;
 `

@@ -1,4 +1,4 @@
-const COLORS = {
+export const COLORS = {
     PRIMARY: '#E12F5F',
     SECONDARY: 'A12244',
     DIMMED: 'rgba(225, 45, 93, 0.10)',
