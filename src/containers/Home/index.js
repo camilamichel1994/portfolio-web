@@ -9,7 +9,7 @@ const Home = () => {
     const { value: theme } = useSelector(getTheme)
 
     return (
-        <HomeStyled>
+        <HomeStyled theme={theme}>
             hello home
         </HomeStyled>
     )

@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import {
@@ -11,7 +11,11 @@ import {
 } from './StepperStyled'
 
 const Stepper = props => {
-    const [activeStep, setActiveStep] = useState(props.activeStep || 1)
+    const [activeStep, setActiveStep] = useState(props.activeStep)
+
+    useEffect(() => {
+        setActiveStep(props.activeStep)
+    }, [props.activeStep])
 
     return (
         <Fragment>
@@ -35,7 +39,7 @@ const renderSteps = (steps, theme, activeStep, setActiveStep) => {
     for (let i = 1; i <= steps; i++) {
         const isActive = activeStep == i
         stepList.push(
-            <Step theme={theme} isActive={isActive} activeStep={activeStep} onClick={() => i < activeStep ? setActiveStep(i) : null}>{i}</Step>
+            <Step theme={theme} key={i} isActive={isActive} activeStep={activeStep} onClick={() => i < activeStep ? setActiveStep(i) : null}>{i}</Step>
         )
     }
     return stepList
