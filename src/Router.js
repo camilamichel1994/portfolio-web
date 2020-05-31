@@ -19,7 +19,6 @@ const GlobalStyle = createGlobalStyle`
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 80px;
 `
 
 const Router = () => {

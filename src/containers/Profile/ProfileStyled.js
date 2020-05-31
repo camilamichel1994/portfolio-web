@@ -6,7 +6,7 @@ export const ProfileStyled = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 25px;
+    padding: 80px 25px 25px 25px;
     width: 1100px;
     
     @media (max-width: ${SCREEN.SIZES.TABLET}) {
@@ -14,7 +14,7 @@ export const ProfileStyled = styled.div`
     }
     @media (max-width: ${SCREEN.SIZES.MOBILE}) {
         flex: 1;
-        padding: 0px;
+        padding: 65px 0px 0px 0px;
     }
 `
 

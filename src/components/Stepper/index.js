@@ -27,22 +27,29 @@ const Stepper = props => {
                         </BackStep>
                     </LinkStyled>
                 }
-                { renderSteps(props.steps, props.theme, activeStep, setActiveStep) }
+                { renderSteps(props.steps, props.theme, activeStep, setActiveStep, props.onStepClick) }
             </StepperStyled>
             <Divisor theme={props.theme} />
         </Fragment>
     )
 }
 
-const renderSteps = (steps, theme, activeStep, setActiveStep) => {
+const renderSteps = (steps, theme, activeStep, setActiveStep, onStepClick) => {
     const stepList = []
     for (let i = 1; i <= steps; i++) {
         const isActive = activeStep == i
         stepList.push(
-            <Step theme={theme} key={i} isActive={isActive} activeStep={activeStep} onClick={() => i < activeStep ? setActiveStep(i) : null}>{i}</Step>
+            <Step theme={theme} key={i} isActive={isActive} activeStep={activeStep} onClick={() => setNewStep(i < activeStep, i, setActiveStep, onStepClick)}>{i}</Step>
         )
     }
     return stepList
+}
+
+const setNewStep = (isEnabled, newStep, setActiveStep, onStepClick) => {
+    if (isEnabled) {
+        setActiveStep(newStep)
+        onStepClick(newStep)
+    }
 }
 
 Stepper.propTypes = {
@@ -51,6 +58,7 @@ Stepper.propTypes = {
     backTo: PropTypes.string,
     hasBackButton: PropTypes.bool,
     activeStep: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    onStepClick: PropTypes.func.isRequired,
 }
 
 Stepper.defaultProps = {

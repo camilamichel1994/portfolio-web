@@ -18,7 +18,7 @@ const CreatePanel = () => {
     return (
         <CreatePanelStyled>
             <StepperWrapper>
-                <Stepper theme={theme} steps={4} backTo="/profile" hasBackButton activeStep={step} />
+                <Stepper theme={theme} steps={4} backTo="/profile" hasBackButton activeStep={step} onStepClick={step => setStep(step)}/>
             </StepperWrapper>
             <ContentWrapper>
                 { renderStep(step, theme, setStep, setLayout) }
