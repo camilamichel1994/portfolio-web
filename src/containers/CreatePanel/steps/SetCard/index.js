@@ -39,7 +39,7 @@ const renderCards = (cards, theme, activeCard, setActiveCard, onSelect) => (
             <ArrowIcon icon={faAngleRight} theme={theme} onClick={() => setActiveCard(getNextCard(cards, activeCard, 1))} />
         </CardWrapper>
         <CardName theme={theme}>{cards[activeCard].name}</CardName>
-        <CardDescription>{cards[activeCard].description}</CardDescription>
+        <CardDescription theme={theme}>{cards[activeCard].description}</CardDescription>
     </React.Fragment>
 )
 

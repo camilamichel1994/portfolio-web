@@ -10,6 +10,12 @@ export const COLORS = {
     GREEN: '#129A7D',
     RED: '#D92027',
     YELLOW: '#D1A958',
+    BLUE: '#1B6CA8',
+    CYAN: '#0E9AA7',
+    PURPLE: '#5c2a9d',
+    ORANGE: '#fc7e2f',
+    PINK: '#eb6383',
+    BROWN: '#7c3c21',
 }
 
 export const FIELDS = {

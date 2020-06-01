@@ -28,7 +28,15 @@ const Input = props => {
             }
             <InputStyled isValid={isValid} {...props}>
                 {props.startIcon && <StartIcon icon={props.startIcon} theme={props.theme} isvalid={isValid.toString()} />}
-                <InputNative theme={props.theme} onChange={e => setIsValid(validate(props.validationRule, e.target.value, props.required, props.validate))} type={props.type || 'text'} />
+                <InputNative
+                    theme={props.theme}
+                    onChange={e => {
+                        if (!!props.onChange) props.onChange(e)
+                        setIsValid(validate(props.validationRule, e.target.value, props.required, props.validate))
+                    }}
+                    type={props.type || 'text'}
+                    value={props.value}
+                />
                 {props.endIcon && <EndIcon icon={props.endIcon} theme={props.theme} isvalid={isValid.toString()} />}
             </InputStyled>
             {(props.helper && isValid) && <Helper theme={props.theme} isValid={isValid}>{props.helper}</Helper>}
@@ -64,10 +72,12 @@ Input.propTypes = {
     endIcon: PropTypes.object,
     validationRule: PropTypes.func,
     validate: PropTypes.func,
+    onChange: PropTypes.func,
     type: PropTypes.string,
     helper: PropTypes.string,
     errorMessage: PropTypes.string,
     width: PropTypes.string,
+    value: PropTypes.string,
 }
 Input.defaultProps = {
     label: null,
@@ -79,7 +89,6 @@ Input.defaultProps = {
     type: null,
     helper: null,
     errorMessage: null,
-    width: null,
 }
 
 export default Input
