@@ -16,7 +16,7 @@ export const NavbarStyled = styled.div`
     border-bottom: ${({ theme }) => `1px ${theme.NAME === THEME_NAME.MIDNIGHT ? theme.TEXT : 'none'} solid` };
     justify-content: center;
     position: fixed;
-    
+    z-index: 1000;
 `
 
 export const Wrapper = styled.div`

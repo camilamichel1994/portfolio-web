@@ -4,11 +4,8 @@ import { getTheme } from '../../reducers/theme-reducer'
 import SetCard from './steps/SetCard'
 import SetBasic from './steps/SetBasic'
 import SetData from './steps/SetData'
-import Stepper from '../../components/Stepper'
 import {
     CreatePanelStyled,
-    ContentWrapper,
-    StepperWrapper,
 } from './CreatePanelStyled'
 
 const CreatePanel = () => {
@@ -21,12 +18,7 @@ const CreatePanel = () => {
     
     return (
         <CreatePanelStyled>
-            <StepperWrapper>
-                <Stepper theme={theme} steps={4} backTo="/profile" hasBackButton activeStep={step} onStepClick={step => setStep(step)}/>
-            </StepperWrapper>
-            <ContentWrapper>
-                { renderStep(step, theme, setStep, setLayout, setTitle, setColor, setIcon) }
-            </ContentWrapper>
+            { renderStep(step, theme, setStep, setLayout, setTitle, setColor, setIcon) }
         </CreatePanelStyled>
     )
 }

@@ -1,14 +1,21 @@
 import React, { useState } from 'react'
 import PanelCard from '../../../../components/PanelCard'
+import Card from '../../../../components/Card'
+import Button from '../../../../components/Button'
 import { COLORS } from '../../../../constants/theme'
+import ELEVATION from '../../../../constants/elevation'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import {
-    CreatePanelStyled,
+    SetCardStyled,
     Title,
     CardWrapper,
     ArrowIcon,
-    CardName,
     CardDescription,
+    InfoWrapper,
+    CardAreaWrapper,
+    InfoCardWrapper,
+    CardList,
+    CardListItem,
 } from './SetCardStyled'
 
 const SetCard = ({ theme, onSelect }) => {
@@ -22,26 +29,43 @@ const SetCard = ({ theme, onSelect }) => {
     ]
 
     return (
-        <CreatePanelStyled>
-            <Title theme={theme}>Choose a panel layout</Title>
-            { renderCards(cards, theme, activeCard, setActiveCard, onSelect) }
-        </CreatePanelStyled>
+        <SetCardStyled>
+            <CardAreaWrapper>
+                <Title theme={theme}>Choose a Panel layout</Title>
+                <CardWrapper>
+                    <ArrowIcon icon={faAngleLeft} theme={theme} onClick={() => setActiveCard(getNextCard(cards, activeCard, 0))} />
+                    <span onClick={() => onSelect(cards[activeCard].alias)}>
+                        <PanelCard color={cards[activeCard].color} alias={cards[activeCard].alias} />
+                    </span>
+                    <ArrowIcon icon={faAngleRight} theme={theme} onClick={() => setActiveCard(getNextCard(cards, activeCard, 1))} />
+                </CardWrapper>
+            </CardAreaWrapper>
+            <InfoWrapper>
+                <InfoCardWrapper>
+                    <Card theme={theme} elevation={ELEVATION[1]} title={cards[activeCard].name} height="max-content">
+                        <CardDescription theme={theme}>{cards[activeCard].description}</CardDescription>
+                        <Button title="This one!" onClick={() => onSelect(cards[activeCard].alias)} />
+                    </Card>
+                </InfoCardWrapper>
+                <InfoCardWrapper>
+                    <Card theme={theme} elevation={ELEVATION[1]} title="Available Panels">
+                        <CardList>{ renderCardList(cards, activeCard, setActiveCard, theme) }</CardList>
+                    </Card>
+                </InfoCardWrapper>
+            </InfoWrapper>
+        </SetCardStyled>
     )
 }
 
-const renderCards = (cards, theme, activeCard, setActiveCard, onSelect) => (
-    <React.Fragment>
-        <CardWrapper>
-            <ArrowIcon icon={faAngleLeft} theme={theme} onClick={() => setActiveCard(getNextCard(cards, activeCard, 0))} />
-            <span onClick={() => onSelect(cards[activeCard].alias)}>
-                <PanelCard color={cards[activeCard].color} alias={cards[activeCard].alias} />
-            </span>
-            <ArrowIcon icon={faAngleRight} theme={theme} onClick={() => setActiveCard(getNextCard(cards, activeCard, 1))} />
-        </CardWrapper>
-        <CardName theme={theme}>{cards[activeCard].name}</CardName>
-        <CardDescription theme={theme}>{cards[activeCard].description}</CardDescription>
-    </React.Fragment>
-)
+const renderCardList = (cards, activeCard, setActiveCard, theme) => {
+    const list = []
+    cards.forEach(card => {
+        list.push(
+            <CardListItem key={card.id} isActive={cards[activeCard].id === card.id} onClick={() => setActiveCard(cards.findIndex(c => c.id === card.id))}>{card.name}</CardListItem>
+        )
+    })
+    return list
+}
 
 const getNextCard = (cards, activeCard, direction) => {
     const lastCard = cards.length - 1

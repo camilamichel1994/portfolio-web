@@ -7,14 +7,14 @@ export const PanelCardStyled = styled.div`
     width: 170px;
     height: 290px;
     border-radius: 35px;
-    box-shadow: ${ELEVATION[3]};
+    box-shadow: ${ELEVATION[2]};
     cursor: pointer;
     transition: all 0.3s ease 0s;
     -webkit-appearance: none;
     padding: 30px;
 
     &:hover {
-        box-shadow: ${ELEVATION[5]};
+        box-shadow: ${ELEVATION[4]};
         transform: translateY(-4px);
     }
 

@@ -56,7 +56,7 @@ const Navbar = props => {
         <React.Fragment />
 }
 
-const shouldRender = activeRoute => (activeRoute !== '/new-panel')
+const shouldRender = activeRoute => true
 
 Navbar.propTypes = {
     theme: PropTypes.object.isRequired,
