@@ -8,7 +8,6 @@ export const SetCardStyled = styled.div`
     flex-direction: row;
 
     @media (max-width: ${SCREEN.SIZES.TABLET}) {
-        align-items: center;
         flex-direction: column;
     }
     @media (max-width: ${SCREEN.SIZES.MOBILE}) {

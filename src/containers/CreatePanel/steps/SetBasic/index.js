@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
 import { COLORS } from '../../../../constants/theme'
+import ELEVATION from '../../../../constants/elevation'
 import COLOR_TILES from '../../../../constants/colorTiles'
 import Input from '../../../../components/Input'
 import ICONS from '../../../../constants/icons'
-import Button from '../../../../components/Button'
+import Card from '../../../../components/Card'
 import {
     SetBasicStyled,
-    Title,
     ColorTile,
     Colors,
-    Subtitle,
     Icon,
     IconsWrapper,
     IconTile,
-    ButtonWrapper,
+    TopWrapper,
+    RightWrapper,
 } from './SetBasicStyled'
 
 const SetBasic = ({ theme, onNextStep }) => {
@@ -23,15 +23,19 @@ const SetBasic = ({ theme, onNextStep }) => {
 
     return (
         <SetBasicStyled>
-            <Title theme={theme}>What should it be called?</Title>
-            <Input theme={theme} required value={title} onChange={e => setTitle(e.target.value)} />
-            <Subtitle theme={theme}>What color should it have?</Subtitle>
-            <Colors>{ renderColors(color, setColor, theme) }</Colors>
-            <Subtitle theme={theme}>What best defines it?</Subtitle>
-            <IconsWrapper>{ renderIcons(icon, setIcon, theme) }</IconsWrapper>
-            <ButtonWrapper>
-                <Button title="Looks good!" disabled={!isFormValid(title, color, icon)} onClick={() => submit(title, color, icon, onNextStep)} />
-            </ButtonWrapper>
+            <TopWrapper>
+                <Card theme={theme} elevation={ELEVATION[1]} title="What should it be called?">
+                    <Input theme={theme} required label="Title" value={title} onChange={e => setTitle(e.target.value)} />
+                </Card>
+                <RightWrapper>
+                    <Card theme={theme} elevation={ELEVATION[1]} title="Accent color">
+                        <Colors>{ renderColors(color, setColor, theme) }</Colors>
+                    </Card>
+                </RightWrapper>
+            </TopWrapper>
+            <Card theme={theme} elevation={ELEVATION[1]} title="What best defines it?">
+                <IconsWrapper>{ renderIcons(icon, setIcon, theme) }</IconsWrapper>
+            </Card>
         </SetBasicStyled>
     )
 }
