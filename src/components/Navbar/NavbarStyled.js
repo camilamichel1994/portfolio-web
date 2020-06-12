@@ -4,6 +4,7 @@ import { THEME_NAME } from '../../constants/theme'
 import SCREEN from '../../constants/screen'
 import TYPOGRAPHY from '../../constants/typography'
 import { Link } from 'react-router-dom'
+import { COLORS } from '../../constants/theme'
 
 export const NavbarStyled = styled.div`
     display: flex;
@@ -13,7 +14,7 @@ export const NavbarStyled = styled.div`
     height: 65px;
     align-items: center;
     box-shadow: ${({elevation}) => elevation};
-    border-bottom: ${({ theme }) => `1px ${theme.NAME === THEME_NAME.MIDNIGHT ? theme.TEXT : 'none'} solid` };
+    border-bottom: ${({ theme }) => `2px ${theme.NAME === THEME_NAME.MIDNIGHT ? COLORS.DARK : 'none'} solid` };
     justify-content: center;
     position: fixed;
     z-index: 1000;
@@ -62,11 +63,6 @@ export const ProfileImage = styled.div`
     height: 35px;
     margin-left: 15px;
     cursor: pointer;
-    &:hover {
-        border: ${({theme}) => `3px ${theme.PRIMARY} solid`};
-        width: 32px;
-        height: 32px;
-    }
 `
 
 export const LinkStyled = styled(Link)`

@@ -3,6 +3,7 @@ import TYPOGRAPHY from '../../constants/typography'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import { COLORS, THEME_NAME } from '../../constants/theme'
 
 export const QuickChatStyled = styled.div`
     display: flex;
@@ -12,7 +13,7 @@ export const QuickChatStyled = styled.div`
     box-shadow: ${({elevation}) => elevation};
     border-radius: 5px;
     flex: 1;
-    border: ${({ theme }) => `1px ${theme.NAME === 'MIDNIGHT' ? theme.TEXT : 'none'} solid` };
+    border: ${({ theme }) => `2px ${theme.NAME === THEME_NAME.MIDNIGHT ? COLORS.DARK : 'none'} solid` };
 `
 
 export const CardTitle = styled.div`
