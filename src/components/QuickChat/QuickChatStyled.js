@@ -9,7 +9,6 @@ export const QuickChatStyled = styled.div`
     display: flex;
     flex-direction: column;
     background: ${({theme}) => theme.CARD_BACKGROUND};
-    padding: 20px;
     box-shadow: ${({elevation}) => elevation};
     border-radius: 5px;
     flex: 1;
@@ -20,14 +19,14 @@ export const CardTitle = styled.div`
     font-size: ${TYPOGRAPHY.SIZE.SUBTITLE};
     font-weight: bold;
     color: ${({ theme }) => theme.TITLE};
-    margin-bottom: 20px;
+    padding: 20px;
 `
 
 export const SeeMore = styled.div`
-    margin-top: 20px;
     color: ${({ theme }) => theme.PRIMARY};
     font-size: ${TYPOGRAPHY.SIZE.TEXT};
     cursor: pointer;
+    padding: 20px;
 `
 
 export const SeeMoreIcon = styled(FontAwesomeIcon).attrs({ icon: faEnvelope })`
@@ -38,4 +37,13 @@ export const SeeMoreIcon = styled(FontAwesomeIcon).attrs({ icon: faEnvelope })`
 export const LinkStyled = styled(Link)`
     text-decoration: none;
     color: inherit;
+`
+
+export const MessageWrapper = styled.div`
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    &:hover {
+        background: ${({ theme }) => theme.DIMMED};
+    }
 `

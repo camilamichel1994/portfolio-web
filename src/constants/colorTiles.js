@@ -9,6 +9,8 @@ export const COLOR_TILES = {
     ORANGE: 'orange',
     PINK: 'pink',
     BROWN: 'brown',
+    LAVANDER: 'lavander',
+    LEMON: 'lemon',
 }
 
 export default COLOR_TILES

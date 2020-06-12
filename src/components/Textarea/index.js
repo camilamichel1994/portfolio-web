@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import {
-    InputStyled,
-    InputNative,
+    TextareaStyled,
+    TextareaNative,
     LabelWrapper,
     Label,
     Helper,
@@ -11,9 +11,9 @@ import {
     LabelRequiredWrapper,
     StartIcon,
     EndIcon,
-} from './InputStyled'
+} from './TextareaStyled'
 
-const Input = props => {
+const Textarea = props => {
     const [isValid, setIsValid] = useState(true)
 
     return (
@@ -26,9 +26,9 @@ const Input = props => {
                     {props.required && <RequiredSign theme={props.theme}>*</RequiredSign>}
                 </LabelRequiredWrapper>
             }
-            <InputStyled isValid={isValid} theme={props.theme} width={props.width} startIcon={props.startIcon} endIcon={props.endIcon}>
+            <TextareaStyled isValid={isValid} theme={props.theme} width={props.width} startIcon={props.startIcon} endIcon={props.endIcon}>
                 {props.startIcon && <StartIcon icon={props.startIcon} theme={props.theme} isvalid={isValid.toString()} />}
-                <InputNative
+                <TextareaNative
                     theme={props.theme}
                     onChange={e => {
                         if (!!props.onChange) props.onChange(e)
@@ -38,7 +38,7 @@ const Input = props => {
                     value={props.value}
                 />
                 {props.endIcon && <EndIcon icon={props.endIcon} theme={props.theme} isvalid={isValid.toString()} />}
-            </InputStyled>
+            </TextareaStyled>
             {(props.helper && isValid) && <Helper theme={props.theme} isValid={isValid}>{props.helper}</Helper>}
             {(props.errorMessage && !isValid) && <ErrorMessage theme={props.theme}>{props.errorMessage}</ErrorMessage>}
         </LabelWrapper>
@@ -64,7 +64,7 @@ const validate = (regex, payload, isRequired, validateToParent = () => {}) => {
     return isRegexValid
 }
 
-Input.propTypes = {
+Textarea.propTypes = {
     label: PropTypes.string,
     theme: PropTypes.object.isRequired,
     required: PropTypes.bool,
@@ -79,7 +79,7 @@ Input.propTypes = {
     width: PropTypes.string,
     value: PropTypes.string,
 }
-Input.defaultProps = {
+Textarea.defaultProps = {
     label: null,
     required: false,
     startIcon: null,
@@ -91,5 +91,5 @@ Input.defaultProps = {
     errorMessage: null,
 }
 
-export default Input
+export default Textarea
 

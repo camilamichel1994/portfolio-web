@@ -17,6 +17,9 @@ export const COLORS = {
     ORANGE: '#fc7e2f',
     PINK: '#eb6383',
     BROWN: '#7c3c21',
+    CLEAR: '#F6F8FA',
+    LAVANDER: '#726A95',
+    LEMON: '#BBEAA6',
 }
 
 export const FIELDS = {
@@ -60,7 +63,7 @@ const LIGHT = {
     BACKGROUND: COLORS.WHITE,
     TEXT: COLORS.DARK,
     DIMMED: COLORS.DIMMED,
-    CARD_BACKGROUND: COLORS.WHITE,
+    CARD_BACKGROUND: COLORS.CLEAR,
     DISABLED: COLORS.GREY,
     FIELDS: {...FIELDS},
 }

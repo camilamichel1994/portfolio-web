@@ -7,6 +7,7 @@ import {
     SeeMore,
     SeeMoreIcon,
     LinkStyled,
+    MessageWrapper,
 } from './QuickChatStyled'
 
 const QuickChat = props => {
@@ -29,7 +30,9 @@ const renderMessages = theme => {
     const messages = []
     people.forEach(p => {
         messages.push(
-            <MessageItem key={p.id} theme={theme} firstName={p.firstName} lastName={p.lastName} image={p.image} isOnline={p.isOnline} />
+            <MessageWrapper theme={theme} key={p.id}>
+                <MessageItem theme={theme} firstName={p.firstName} lastName={p.lastName} image={p.image} isOnline={p.isOnline} />
+            </MessageWrapper>
         )
     })
     return messages

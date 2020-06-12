@@ -35,7 +35,7 @@ const SetCard = ({ theme, onSelect }) => {
                 <Card theme={theme} elevation={ELEVATION[1]} title="Choose a Panel layout">
                     <ChoosePanelWrapper>
                         <span onClick={() => onSelect(cards[activeCard].alias)}>
-                            <PanelCard color={cards[activeCard].color} alias={cards[activeCard].alias} />
+                            <PanelCard theme={theme} color={cards[activeCard].color} alias={cards[activeCard].alias} />
                         </span>
                         <CardInfo>
                             <CardTitleWrapper>
@@ -51,7 +51,7 @@ const SetCard = ({ theme, onSelect }) => {
             <ListWrapper>
                 <ListCardWrapper>
                     <Card theme={theme} elevation={ELEVATION[1]} title="Available Panels" spaced>
-                        <CardList>{ renderCardList(cards, activeCard, setActiveCard, theme) }</CardList>
+                        <CardList>{ renderCardList(cards, activeCard, setActiveCard, onSelect, theme) }</CardList>
                     </Card>
                 </ListCardWrapper>
             </ListWrapper>
@@ -59,7 +59,7 @@ const SetCard = ({ theme, onSelect }) => {
     )
 }
 
-const renderCardList = (cards, activeCard, setActiveCard, theme) => {
+const renderCardList = (cards, activeCard, setActiveCard, onSelect, theme) => {
     const list = []
     cards.forEach(card => {
         list.push(
@@ -67,7 +67,10 @@ const renderCardList = (cards, activeCard, setActiveCard, theme) => {
                 theme={theme}
                 key={card.id}
                 isActive={cards[activeCard].id === card.id}
-                onClick={() => setActiveCard(cards.findIndex(c => c.id === card.id))}
+                onClick={() => {
+                    setActiveCard(cards.findIndex(c => c.id === card.id))
+                    onSelect(card.alias)
+                }}
             >
                 {card.name}
             </CardListItem>
