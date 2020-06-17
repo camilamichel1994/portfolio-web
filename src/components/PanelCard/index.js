@@ -9,7 +9,7 @@ import {
 } from './PanelCardStyled'
 
 const PanelCard = props => (
-    <PanelCardStyled color={props.color}>
+    <PanelCardStyled color={props.color} theme={props.theme}>
         { renderSkeleton(props.alias) }
     </PanelCardStyled>
 )

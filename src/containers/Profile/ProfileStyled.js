@@ -19,7 +19,7 @@ export const ProfileStyled = styled.div`
 `
 
 export const ChatWrapper = styled.div`
-    width: 400px;
+    width: 350px;
     padding-left: 15px;
 
     @media (max-width: ${SCREEN.SIZES.TABLET}) {
@@ -59,6 +59,9 @@ export const Tab = styled.div`
     font-size: ${() => TYPOGRAPHY.SIZE.TEXT};
     text-transform: uppercase;
     border-bottom: ${({ isSelected, theme }) => isSelected ? `4px ${theme.PRIMARY} solid` : 'none'};
+    &:hover {
+        border-bottom: ${({ isSelected, theme }) => isSelected ? `4px ${theme.PRIMARY} solid` : `4px ${theme.DIMMED} solid`};
+    }
 `
 
 export const TabContent = styled.div`

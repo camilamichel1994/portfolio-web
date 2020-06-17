@@ -7,7 +7,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export const SetBasicStyled = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
+`
+
+export const TopWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+
+    @media (max-width: ${SCREEN.SIZES.MOBILE}) {
+        flex-direction: column;
+    }
+`
+
+export const RightWrapper = styled.div`
+    display: flex;
+    margin-left: 15px;
+    max-width: 500px;
+
+    @media (max-width: ${SCREEN.SIZES.MOBILE}) {
+        margin: 15px 0px;
+    }
+`
+
+export const InputWrapper = styled.div`
+    margin-bottom: 10px;
 `
 
 export const Title = styled.div`
@@ -57,7 +80,6 @@ export const IconsWrapper = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    width: 930px;
 
     @media (max-width: ${SCREEN.SIZES.TABLET}) {
         width: 100%;

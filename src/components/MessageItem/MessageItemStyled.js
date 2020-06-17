@@ -5,7 +5,6 @@ export const MessageItemStyled = styled.div`
     display: flex;
     flex-direction: row;
     flex: 1;
-    padding: 15px 0px;
     align-items: center;
     cursor: pointer;
 `
