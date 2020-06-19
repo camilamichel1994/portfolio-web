@@ -28,7 +28,7 @@ const Router = () => {
     return (
         <BrowserRouter>
             <GlobalStyle theme={theme} />
-            <Navbar theme={theme} elevation={ELEVATION[2]} user={user} />
+            <Navbar theme={theme} elevation={ELEVATION[1]} user={user} />
             <Wrapper>
               <Switch>
                   <Route component={Home} path="/" exact />

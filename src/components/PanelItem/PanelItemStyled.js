@@ -22,21 +22,21 @@ export const IconBox = styled.div`
 `
 
 export const Icon = styled(FontAwesomeIcon).attrs({ size: '2x' })`
-    color: ${({ theme }) => theme.TEXT};
+    color: ${({ theme }) => theme.BACKGROUND};
 `
 
 export const ArrowIcon = styled(FontAwesomeIcon).attrs({ size: '2x' })`
     color: ${({ theme }) => theme.TEXT};
-    -webkit-transition-duration: 0.6s;
-    -moz-transition-duration: 0.6s;
-    -o-transition-duration: 0.6s;
-    transition-duration: 0.6s;
+    -webkit-transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    transition-duration: 0.4s;
     -webkit-transition-property: -webkit-transform;
     -moz-transition-property: -moz-transform;
     -o-transition-property: -o-transform;
     transition-property: transform;
     ${({ isopen }) => {
-        if (isopen === 'true') return "-webkit-transform:rotate(180deg); -moz-transform:rotate(180deg); -o-transform:rotate(180deg);"
+        if (isopen === 'true') return "-webkit-transform:rotate(180deg);"
     }}
 `
 

@@ -23,8 +23,8 @@ export const ProfileImage = styled.div`
     background: url(${({ image }) => image}) no-repeat center;
     background-size: cover;
     border-radius: 50%;
-    width: 125px;
-    height: 125px;
+    width: 115px;
+    height: 115px;
     margin-bottom: 20px;
     margin-left: ${({ model }) => model === 2 || model === 4 ? '20px' : '0px'};
 `
@@ -63,6 +63,6 @@ export const LikeRow = styled.div`
 export const LikeCount = styled.div`
     color: ${({theme}) => theme.TEXT};
     font-weight: bold;
-    font-size: ${({typography}) => typography.SIZE.SUBTITLE};
+    font-size: ${({typography}) => typography.SIZE.TEXT};
     margin-left: 10px;
 `

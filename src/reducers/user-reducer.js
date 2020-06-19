@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const mock = {
   name: { first: 'Rachel', last: 'McAdams' },
-  backgroundImage: { url: 'https://images.unsplash.com/photo-1518672703296-e3022657f7b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80' },
+  backgroundImage: { url: 'https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80' },
   profileImage: { url: 'https://www.rbsdirect.com.br/imagesrc/24943251.jpg?w=700' },
   occupation: 'Actress',
   likes: 2137,
