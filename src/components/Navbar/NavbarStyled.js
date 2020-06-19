@@ -18,6 +18,9 @@ export const NavbarStyled = styled.div`
     justify-content: center;
     position: fixed;
     z-index: 1000;
+    @media (max-width: ${SCREEN.SIZES.MOBILE}) {
+        bottom: 0px;
+    }
 `
 
 export const Wrapper = styled.div`

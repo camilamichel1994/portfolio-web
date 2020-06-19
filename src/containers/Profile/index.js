@@ -43,7 +43,7 @@ const Profile = () => {
     return (
         <ProfileStyled theme={theme}>
             <ProfileWrapper>
-                <ProfileCard theme={theme} elevation={ELEVATION[1]} data={user} typography={TYPOGRAPHY} model={profileStyle} />
+                <ProfileCard theme={theme} data={user} model={profileStyle} />
                 <MainView>
                     <Tabs>
                         <Tab theme={theme} isSelected={selectedTab === PROFILE.TABS.PROFILE} onClick={() => setSelectedTab(PROFILE.TABS.PROFILE)}>Profile</Tab>

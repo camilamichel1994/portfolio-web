@@ -4,7 +4,7 @@ import PROFILE from '../constants/profile'
 export const profileSlice = createSlice({
     name: 'profile',
     initialState: {
-      style: PROFILE.PROFILE_STYLES.DEFAULT_CENTER,
+      style: PROFILE.PROFILE_STYLES.MINIFIED,
     },
     reducers: {
       setProfileStyle: (state, action) => state.profile.style = action.payload,
