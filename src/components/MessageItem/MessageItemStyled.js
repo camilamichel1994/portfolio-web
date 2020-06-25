@@ -26,7 +26,7 @@ export const NameImageWrapper = styled.div`
 
 export const Name = styled.div`
     font-size: ${TYPOGRAPHY.SIZE.TEXT};
-    color: ${({ theme }) => theme.TITLE};
+    color: ${({ theme }) => theme.TEXT};
     margin-left: 10px;
 `
 

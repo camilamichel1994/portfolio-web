@@ -84,7 +84,7 @@ export const Photo = styled.div`
     background-size: cover;
     border-radius: 10px;
     margin: 2px;
-    min-width: 90px;
-    height: 90px;
+    min-width: 88px;
+    height: 88px;
     cursor: pointer;
 `

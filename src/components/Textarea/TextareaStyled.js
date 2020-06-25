@@ -11,7 +11,7 @@ export const TextareaStyled = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    background: ${({ theme }) => theme.BACKGROUND};
+    background: transparent;
     justify-content: ${({ startIcon, endIcon }) => {
         if (startIcon) return 'flex-start'
         if (endIcon) return 'flex-end'
@@ -49,7 +49,7 @@ export const TextareaNative = styled.textarea`
     outline: none;
     border: none;
     border-radius: 5px;
-    background: ${({ theme }) => theme.BACKGROUND};
+    background: transparent;
     color: ${({ theme }) => theme.TEXT};
     width: 100%;
     box-sizing: border-box;

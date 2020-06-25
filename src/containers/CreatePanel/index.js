@@ -3,39 +3,92 @@ import { useSelector } from 'react-redux'
 import { getTheme } from '../../reducers/theme-reducer'
 import COLOR_TILES from '../../constants/colorTiles'
 import { COLORS } from '../../constants/theme'
-import Button from '../../components/Button'
+import ELEVATION from '../../constants/elevation'
+import Card from '../../components/Card'
+import ICONS from '../../constants/icons'
+import Input from '../../components/Input'
+import Textarea from '../../components/Textarea'
 import {
     CreatePanelStyled,
-    Title,
     SectionDescription,
     Tile,
     TileMiniRow,
     TileMini,
     ColorPickText,
     TileImageRow,
+    SideWrapper,
+    IconPanelWrapper,
+    Icon,
+    IconTile,
+    IconsWrapper,
+    FormWrapper,
+    MainWrapper,
+    DescriptionWrapper,
+    TitleCardWrapper,
+    Bold,
+    StylesList,
+    CardListItem,
 } from './CreatePanelStyled'
 
 const CreatePanel = () => {
     const { value: theme } = useSelector(getTheme)
     const [isValid, setIsValid] = useState(false)
-    const [layout, setLayout] = useState()
+    const [layout, setLayout] = useState({ id: 1, alias: 'progress_bars', name: 'Progess Bars', description: "Good for showing your skill levels or a work's progress." })
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    const [color, setColor] = useState()
+    const [color, setColor] = useState(COLORS.PRIMARY)
+    const [icon, setIcon] = useState(ICONS.ASTERISK)
+
+    const layoutList = [
+        { id: 1, alias: 'progress_bars', name: 'Progess Bars', description: "Good for showing your skill levels or a work's progress." },
+        { id: 2, alias: 'pill_collection', name: 'Pill Collection', description: 'A horizontal list of pills.' },
+        { id: 3, alias: 'basic_info', name: 'Basic Information', description: 'Use this to display basic information such as e-mail and phone number.' },
+        { id: 4, alias: 'list_view', name: 'List View', description: 'A simple vertical list of items. Be creative!' },
+    ]
 
     return (
         <CreatePanelStyled>
-            <Title>Basic details</Title>
-            <SectionDescription>Describe your panel's basic information.</SectionDescription>
-            <SectionDescription>What should it look like?</SectionDescription>
-            <TileImageRow>
-                <Tile theme={theme} color={color ? color : COLORS.GREY}>{title && title[0]}</Tile>
-                <Button small outlined title="Upload image" />
-            </TileImageRow>
-            <ColorPickText>Or select a color:</ColorPickText>
-            <TileMiniRow>
-                { renderColors(setColor) }
-            </TileMiniRow>
+            <SideWrapper>
+                <Card title="Basic details" theme={theme} elevation={ELEVATION[1]}>
+                    <SectionDescription theme={theme}>Describe your panel's basic information.</SectionDescription>
+                    <SectionDescription theme={theme}>What should it look like?</SectionDescription>
+                    <TileImageRow>
+                        <Tile theme={theme} color={color ? color : COLORS.GREY}>
+                            <Icon maintile="true" theme={theme} icon={icon.ICON} />
+                        </Tile>
+                    </TileImageRow>
+                    <ColorPickText theme={theme}>Select a color:</ColorPickText>
+                    <TileMiniRow>
+                        { renderColors(setColor) }
+                    </TileMiniRow>
+                </Card>
+                <IconPanelWrapper>
+                    <Card title="What best defines it?" theme={theme} elevation={ELEVATION[1]}>
+                        <SectionDescription theme={theme}>Choose an icon to represent your panel.</SectionDescription>
+                        <IconsWrapper>{ renderIcons(icon, setIcon, theme) }</IconsWrapper>
+                    </Card>
+                </IconPanelWrapper>
+            </SideWrapper>
+            <MainWrapper>
+                <TitleCardWrapper>
+                    <Card title="What should it be called?" theme={theme} elevation={ELEVATION[1]}>
+                        <SectionDescription theme={theme}>You can always change this later.</SectionDescription>
+                        <FormWrapper>
+                            <Input label="Title" theme={theme} required />
+                            <DescriptionWrapper>
+                                <Textarea label="Short description" theme={theme} required />
+                            </DescriptionWrapper>
+                        </FormWrapper>
+                    </Card>
+                </TitleCardWrapper>
+                <Card title="Define a style" theme={theme} elevation={ELEVATION[1]}>
+                    <SectionDescription theme={theme}>Choose a style that best fits your needs.</SectionDescription>
+                    <SectionDescription theme={theme}>This can <Bold>not</Bold> be changed later.</SectionDescription>
+                    <StylesList>
+                        { renderLayoutList(layoutList, layout, setLayout, theme) }
+                    </StylesList>
+                </Card>
+            </MainWrapper>
         </CreatePanelStyled>
     )
 }
@@ -55,5 +108,34 @@ const renderColors = setColor => [
     <TileMini key={COLOR_TILES.LEMON} color={COLORS.LEMON} onClick={() => setColor(COLORS.LEMON)} />,
 ]
 
-export default CreatePanel
+const renderIcons = (activeIcon, setIcon, theme) => {
+    const icons = []
+    Object.entries(ICONS).forEach(i => {
+        const icon = i[1]
+        icons.push(
+            <IconTile key={icon.NAME} theme={theme} onClick={() => setIcon(icon)} isActive={activeIcon.NAME === icon.NAME}>
+                <Icon theme={theme} icon={icon.ICON} />
+            </IconTile>
+        )
+    })
+    return icons
+}
 
+const renderLayoutList = (layouts, activeLayout, setLayout, theme) => {
+    const list = []
+    layouts.forEach(layout => {
+        list.push(
+            <CardListItem
+                theme={theme}
+                key={layout.id}
+                isActive={activeLayout.id === layout.id}
+                onClick={() => setLayout(layout)}
+            >
+                {layout.name}
+            </CardListItem>
+        )
+    })
+    return list
+}
+
+export default CreatePanel
