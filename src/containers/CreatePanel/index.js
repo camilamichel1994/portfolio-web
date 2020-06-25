@@ -1,87 +1,59 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { getTheme } from '../../reducers/theme-reducer'
-import SetCard from './steps/SetCard'
-import SetBasic from './steps/SetBasic'
-import SetData from './steps/SetData'
-import { TOP_ELEVATION } from '../../constants/elevation'
 import COLOR_TILES from '../../constants/colorTiles'
-import ICONS from '../../constants/icons'
+import { COLORS } from '../../constants/theme'
+import Button from '../../components/Button'
 import {
     CreatePanelStyled,
-    BottomNavigator,
-    ButtonStyled,
-    LinkStyled,
+    Title,
+    SectionDescription,
+    Tile,
+    TileMiniRow,
+    TileMini,
+    ColorPickText,
+    TileImageRow,
 } from './CreatePanelStyled'
 
 const CreatePanel = () => {
     const { value: theme } = useSelector(getTheme)
-    const [isValid, setIsValid] = useState(true)
-    const [layout, setLayout] = useState('progress_bars')
-    const [step, setStep] = useState(1)
+    const [isValid, setIsValid] = useState(false)
+    const [layout, setLayout] = useState()
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [color, setColor] = useState()
-    const [icon, setIcon] = useState()
-
-    // console.log('layout', layout)
-    // console.log('title', title)
-    // console.log('description', description)
-    // console.log('color', color)
-    // console.log('icon', icon)
 
     return (
-        <Fragment>
-            <CreatePanelStyled>
-                { renderStep(step, theme, setLayout, setIsValid, setTitle, setDescription, setColor, setIcon) }
-            </CreatePanelStyled>
-            <BottomNavigator theme={theme} elevation={TOP_ELEVATION[2]}>
-                { step === 1 &&
-                <LinkStyled to="/profile"><ButtonStyled round outlined title="Back" /></LinkStyled> }
-                { step !== 1 &&
-                <ButtonStyled
-                    round
-                    outlined
-                    title="Previous"
-                    onClick={() => {
-                        setIsValid(true)
-                        setStep(step - 1)
-                    }} 
-                /> }
-                <ButtonStyled
-                    round
-                    title="Next"
-                    disabled={!isValid}
-                    onClick={() => {
-                        setIsValid(false)
-                        if (isValid) setStep(step + 1)
-                    }}
-                />
-            </BottomNavigator>
-        </Fragment>
+        <CreatePanelStyled>
+            <Title>Basic details</Title>
+            <SectionDescription>Describe your panel's basic information.</SectionDescription>
+            <SectionDescription>What should it look like?</SectionDescription>
+            <TileImageRow>
+                <Tile theme={theme} color={color ? color : COLORS.GREY}>{title && title[0]}</Tile>
+                <Button small outlined title="Upload image" />
+            </TileImageRow>
+            <ColorPickText>Or select a color:</ColorPickText>
+            <TileMiniRow>
+                { renderColors(setColor) }
+            </TileMiniRow>
+        </CreatePanelStyled>
     )
 }
 
-const renderStep = (step, theme, setLayout, setIsValid, setTitle, setDescription, setColor, setIcon) => {
-    switch (step) {
-        case 1:
-            return <SetCard theme={theme} onSelect={card => setLayout(card)} />
-        case 2:
-            return <SetBasic theme={theme} onValidate={
-                (isValid, title, description, color, icon) => {
-                    console.log(isValid)
-                    setIsValid(isValid)
-                    setTitle(title)
-                    setDescription(description)
-                    setColor(color)
-                    setIcon(icon)
-                }} />
-        case 3:
-            return <SetData theme={theme} />
-        default:
-            return ''
-    }
-}
+const renderColors = setColor => [
+    <TileMini key={COLOR_TILES.PRIMARY} color={COLORS.PRIMARY} onClick={() => setColor(COLORS.PRIMARY)} />,
+    <TileMini key={COLOR_TILES.GREEN} color={COLORS.GREEN} onClick={() => setColor(COLORS.GREEN)} />,
+    <TileMini key={COLOR_TILES.RED} color={COLORS.RED} onClick={() => setColor(COLORS.RED)} />,
+    <TileMini key={COLOR_TILES.YELLOW} color={COLORS.YELLOW} onClick={() => setColor(COLORS.YELLOW)} />,
+    <TileMini key={COLOR_TILES.BLUE} color={COLORS.BLUE} onClick={() => setColor(COLORS.BLUE)} />,
+    <TileMini key={COLOR_TILES.CYAN} color={COLORS.CYAN} onClick={() => setColor(COLORS.CYAN)} />,
+    <TileMini key={COLOR_TILES.PURPLE} color={COLORS.PURPLE} onClick={() => setColor(COLORS.PURPLE)} />,
+    <TileMini key={COLOR_TILES.ORANGE} color={COLORS.ORANGE} onClick={() => setColor(COLORS.ORANGE)} />,
+    <TileMini key={COLOR_TILES.PINK} color={COLORS.PINK} onClick={() => setColor(COLORS.PINK)} />,
+    <TileMini key={COLOR_TILES.BROWN} color={COLORS.BROWN} onClick={() => setColor(COLORS.BROWN)} />,
+    <TileMini key={COLOR_TILES.LAVANDER} color={COLORS.LAVANDER} onClick={() => setColor(COLORS.LAVANDER)} />,
+    <TileMini key={COLOR_TILES.LEMON} color={COLORS.LEMON} onClick={() => setColor(COLORS.LEMON)} />,
+]
 
 export default CreatePanel
 

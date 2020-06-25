@@ -12,9 +12,9 @@ export const MessageItemStyled = styled.div`
 export const ProfileImage = styled.div`
     background: url(${({ image }) => image}) no-repeat center;
     background-size: cover;
-    width: 50px;
-    height: 50px;
-    border-radius: 15px;
+    width: 45px;
+    height: 45px;
+    border-radius: 25px;
 `
 
 export const NameImageWrapper = styled.div`
@@ -27,7 +27,6 @@ export const NameImageWrapper = styled.div`
 export const Name = styled.div`
     font-size: ${TYPOGRAPHY.SIZE.TEXT};
     color: ${({ theme }) => theme.TITLE};
-    font-weight: 500;
     margin-left: 10px;
 `
 

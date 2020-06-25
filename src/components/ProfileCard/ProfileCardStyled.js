@@ -9,6 +9,7 @@ export const ProfileCardStyled = styled.div`
     background-size: cover;
     height: 480px;
     border-radius: 5px;
+    box-shadow: ${({ elevation }) => elevation};
 `
 
 export const Gradient = styled.div`
@@ -31,6 +32,7 @@ export const Gradient = styled.div`
     justify-content: flex-end;
     padding: 0px 20px;
     height: 480px;
+    border-radius: 5px;
 `
 
 export const ProfileImage = styled.div`

@@ -18,7 +18,7 @@ export const ProfileStyled = styled.div`
     }
 `
 
-export const ChatWrapper = styled.div`
+export const SideWrapper = styled.div`
     width: 320px;
     padding-left: 15px;
 
@@ -33,16 +33,15 @@ export const ProfileWrapper = styled.div`
     flex: 1;
 `
 
-export const MainView = styled.div`
-    padding: 0px 20px;
+export const MainWrapper = styled.div`
+    padding-top: 15px;
 `
 
 export const Tabs = styled.div`
     display: flex;
     flex: 1;
     flex-direction: row;
-    justify-content: space-between;
-    margin-top: 40px;
+    justify-content: flex-start;
 `
 
 export const SelectedTab = styled.div`
@@ -51,21 +50,41 @@ export const SelectedTab = styled.div`
 
 export const Tab = styled.div`
     display: flex;
-    flex: 1;
     justify-content: center;
-    padding: 7px;
+    padding: 7px 20px 7px 0px;
     cursor: pointer;
-    color: ${({ theme }) => theme.TEXT};
-    font-size: ${() => TYPOGRAPHY.SIZE.TEXT};
-    font-weight: bold;
-    border-bottom: ${({ isSelected, theme }) => isSelected ? `4px ${theme.PRIMARY} solid` : 'none'};
-    &:hover {
-        border-bottom: ${({ isSelected, theme }) => isSelected ? `4px ${theme.PRIMARY} solid` : `4px ${theme.DIMMED} solid`};
-    }
+    color: ${({ theme }) => theme.TITLE};
+    font-size: ${() => TYPOGRAPHY.SIZE.SUBTITLE};
+    font-weight: ${({ isSelected }) => isSelected ? `bold` : 'normal'};
 `
 
 export const TabContent = styled.div`
     display: flex;
     margin: 30px 0px;
     flex: 1;
+`
+
+export const PhotosWrapper = styled.div`
+    margin-top: 15px;
+`
+
+export const PhotosRow = styled.div`
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+`
+
+export const PhotosColumn = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+export const Photo = styled.div`
+    background: url(${({ image }) => image}) no-repeat center;
+    background-size: cover;
+    border-radius: 10px;
+    margin: 2px;
+    min-width: 90px;
+    height: 90px;
+    cursor: pointer;
 `

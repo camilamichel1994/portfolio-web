@@ -15,6 +15,7 @@ Button.propTypes = {
     disabled: PropTypes.bool,
     outlined: PropTypes.bool,
     color: PropTypes.string,
+    small: PropTypes.bool,
 }
 
 Button.defaultProps = {
@@ -22,6 +23,7 @@ Button.defaultProps = {
     disabled: false,
     outlined: false,
     color: null,
+    small: false,
 }
 
 export default Button

@@ -18,7 +18,7 @@ import {
 const ProfileCard = props => {
     
     return (
-        <ProfileCardStyled theme={props.theme} image={props.data.backgroundImage.url}>
+        <ProfileCardStyled elevation={props.elevation} theme={props.theme} image={props.data.backgroundImage.url}>
             { renderCard(props) }
         </ProfileCardStyled>
     )
