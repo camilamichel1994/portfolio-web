@@ -29,11 +29,13 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 0px 20px;
     @media (max-width: ${SCREEN.SIZES.TABLET}) {
         flex: 1;
     }
     @media (max-width: ${SCREEN.SIZES.MOBILE}) {
         flex: 1;
+        padding: 0px;
         justify-content: center;
     }
 `

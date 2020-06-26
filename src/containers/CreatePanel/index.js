@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import { useSelector } from 'react-redux'
 import { getTheme } from '../../reducers/theme-reducer'
 import COLOR_TILES from '../../constants/colorTiles'
 import { COLORS } from '../../constants/theme'
 import ELEVATION from '../../constants/elevation'
 import Card from '../../components/Card'
+import Button from '../../components/Button'
 import ICONS from '../../constants/icons'
 import Input from '../../components/Input'
 import Textarea from '../../components/Textarea'
@@ -17,7 +18,7 @@ import {
     ColorPickText,
     TileImageRow,
     SideWrapper,
-    IconPanelWrapper,
+    StylePanelWrapper,
     Icon,
     IconTile,
     IconsWrapper,
@@ -29,73 +30,83 @@ import {
     StylesList,
     CardListItem,
     StylesListWrapper,
+    BottomNavigation,
+    NextButtonWrapper,
 } from './CreatePanelStyled'
 
 const CreatePanel = () => {
     const { value: theme } = useSelector(getTheme)
     const [isValid, setIsValid] = useState(false)
-    const [layout, setLayout] = useState({ id: 1, alias: 'progress_bars', name: 'Progess Bars', description: "Good for showing your skill levels or a work's progress." })
+    const [layout, setLayout] = useState({ id: 1, alias: 'basic_info', name: 'Basic Information' })
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [color, setColor] = useState(COLORS.PRIMARY)
     const [icon, setIcon] = useState(ICONS.ASTERISK)
 
     const layoutList = [
-        { id: 3, alias: 'basic_info', name: 'Basic Information' },
-        { id: 5, alias: 'carousel', name: 'Carousel' },
-        { id: 7, alias: 'gallery', name: 'Gallery' },
+        { id: 1, alias: 'basic_info', name: 'Basic Information' },
+        { id: 2, alias: 'carousel', name: 'Carousel' },
+        { id: 3, alias: 'gallery', name: 'Gallery' },
         { id: 4, alias: 'list_view', name: 'List View' },
-        { id: 2, alias: 'pill_collection', name: 'Pill Collection' },
-        { id: 1, alias: 'progress_bars', name: 'Progess Bars' },
-        { id: 6, alias: 'simple_text', name: 'Simple Text' },
+        { id: 5, alias: 'pill_collection', name: 'Pill Collection' },
+        { id: 6, alias: 'progress_bars', name: 'Progess Bars' },
+        { id: 7, alias: 'simple_text', name: 'Simple Text' },
     ]
 
     return (
-        <CreatePanelStyled>
-            <SideWrapper>
-                <Card title="Basic details" theme={theme} elevation={ELEVATION[1]}>
-                    <SectionDescription theme={theme}>Describe your panel's basic information.</SectionDescription>
-                    <SectionDescription theme={theme}>What should it look like?</SectionDescription>
-                    <TileImageRow>
-                        <Tile theme={theme} color={color ? color : COLORS.GREY}>
-                            <Icon maintile="true" theme={theme} icon={icon.ICON} />
-                        </Tile>
-                    </TileImageRow>
-                    <ColorPickText theme={theme}>Select a color:</ColorPickText>
-                    <TileMiniRow>
-                        { renderColors(setColor) }
-                    </TileMiniRow>
-                </Card>
-                <IconPanelWrapper>
+        <Fragment>
+            <CreatePanelStyled>
+                <SideWrapper>
+                    <Card title="Basic details" theme={theme} elevation={ELEVATION[1]}>
+                        <SectionDescription theme={theme}>Describe your panel's basic information.</SectionDescription>
+                        <SectionDescription theme={theme}>What should it look like?</SectionDescription>
+                        <TileImageRow>
+                            <Tile theme={theme} color={color ? color : COLORS.PRIMARY}>
+                                <Icon maintile="true" theme={theme} icon={icon.ICON} />
+                            </Tile>
+                        </TileImageRow>
+                        <ColorPickText theme={theme}>Select a color:</ColorPickText>
+                        <TileMiniRow>
+                            { renderColors(setColor) }
+                        </TileMiniRow>
+                    </Card>
+                    <StylePanelWrapper>
+                        <Card title="Define a style" theme={theme} elevation={ELEVATION[1]}>
+                            <SectionDescription theme={theme}>Choose a style that best fits your needs.</SectionDescription>
+                            <SectionDescription theme={theme}>This can <Bold>not</Bold> be changed later.</SectionDescription>
+                            <StylesListWrapper>
+                                <StylesList>
+                                    { renderLayoutList(layoutList, layout, setLayout, theme) }
+                                </StylesList>
+                            </StylesListWrapper>
+                        </Card>
+                    </StylePanelWrapper>
+                </SideWrapper>
+                <MainWrapper>
+                    <TitleCardWrapper>
+                        <Card title="What should it be called?" theme={theme} elevation={ELEVATION[1]}>
+                            <SectionDescription theme={theme}>You can always change this later.</SectionDescription>
+                            <FormWrapper>
+                                <Input label="Title" theme={theme} required />
+                                <DescriptionWrapper>
+                                    <Textarea label="Short description" theme={theme} required />
+                                </DescriptionWrapper>
+                            </FormWrapper>
+                        </Card>
+                    </TitleCardWrapper>
                     <Card title="What best defines it?" theme={theme} elevation={ELEVATION[1]}>
                         <SectionDescription theme={theme}>Choose an icon to represent your panel.</SectionDescription>
                         <IconsWrapper>{ renderIcons(icon, setIcon, theme) }</IconsWrapper>
                     </Card>
-                </IconPanelWrapper>
-            </SideWrapper>
-            <MainWrapper>
-                <TitleCardWrapper>
-                    <Card title="What should it be called?" theme={theme} elevation={ELEVATION[1]}>
-                        <SectionDescription theme={theme}>You can always change this later.</SectionDescription>
-                        <FormWrapper>
-                            <Input label="Title" theme={theme} required />
-                            <DescriptionWrapper>
-                                <Textarea label="Short description" theme={theme} required />
-                            </DescriptionWrapper>
-                        </FormWrapper>
-                    </Card>
-                </TitleCardWrapper>
-                <Card title="Define a style" theme={theme} elevation={ELEVATION[1]}>
-                    <SectionDescription theme={theme}>Choose a style that best fits your needs.</SectionDescription>
-                    <SectionDescription theme={theme}>This can <Bold>not</Bold> be changed later.</SectionDescription>
-                    <StylesListWrapper>
-                        <StylesList>
-                            { renderLayoutList(layoutList, layout, setLayout, theme) }
-                        </StylesList>
-                    </StylesListWrapper>
-                </Card>
-            </MainWrapper>
-        </CreatePanelStyled>
+                </MainWrapper>
+            </CreatePanelStyled>
+            <BottomNavigation theme={theme} elevation={ELEVATION[2]}>
+                <Button title="Back" outlined />
+                <NextButtonWrapper>
+                    <Button title="Next" />
+                </NextButtonWrapper>
+            </BottomNavigation>
+        </Fragment>
     )
 }
 

@@ -1,22 +1,23 @@
 import styled from 'styled-components'
 import SCREEN from '../../constants/screen'
 import TYPOGRAPHY from '../../constants/typography'
+import { COLORS } from '../../constants/theme'
 import ELEVATION, { ELEVATION_COLORED } from '../../constants/elevation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const CreatePanelStyled = styled.div`
-    padding: 80px 25px 25px 25px;
+    padding: 80px 25px 95px 25px;
     width: 1100px;
     display: flex;
     flex-direction: row;
 
     @media (max-width: ${SCREEN.SIZES.TABLET}) {
-        padding: 80px 25px 25px;
+        padding: 80px 25px 95px;
         flex-direction: column;
     }
 
     @media (max-width: ${SCREEN.SIZES.MOBILE}) {
-        padding: 25px 25px 80px;
+        padding: 0px 0px 140px;
         flex-direction: column;
     }
 `
@@ -87,17 +88,20 @@ export const SideWrapper = styled.div`
         width: 450px;
     }
 
-    @media (max-width: ${SCREEN.SIZES.TABLET}) {
-        padding: 0px 0px 15px 0px;
-        flex: 1;
+    @media (max-width: ${SCREEN.SIZES.MOBILE}) {
+        padding: 0px;
     }
 `
 
-export const IconPanelWrapper = styled.div`
+export const StylePanelWrapper = styled.div`
     margin-top: 15px;
+
+    @media (max-width: ${SCREEN.SIZES.MOBILE}) {
+        margin-top: 0px;
+    }
 `
 
-export const Icon = styled(FontAwesomeIcon).attrs({ size: 'lg' })`
+export const Icon = styled(FontAwesomeIcon).attrs({ size: '1x' })`
     color: ${({ theme, maintile }) => maintile ? theme.CARD_BACKGROUND : theme.TEXT};
 `
 
@@ -145,6 +149,10 @@ export const MainWrapper = styled.div`
 export const TitleCardWrapper = styled.div`
     height: max-content;
     margin-bottom: 15px;
+
+    @media (max-width: ${SCREEN.SIZES.MOBILE}) {
+        margin-bottom: 0px;
+    }
 `
 
 export const DescriptionWrapper = styled.div`
@@ -160,7 +168,6 @@ export const StylesList = styled.div`
     flex: 1;
     flex-direction: column;
     margin-top: 25px;
-    max-width: 300px;
 `
 
 export const StylesListWrapper = styled.div`
@@ -176,11 +183,32 @@ export const CardListItem = styled.div`
     padding: 10px;
     cursor: pointer;
     background: ${({ isActive, theme }) => isActive ? theme.PRIMARY : theme.CARD_BACKGROUND};
-    color: ${({ isActive, theme }) => isActive ? theme.CARD_BACKGROUND : theme.TEXT};
+    color: ${({ isActive, theme }) => isActive ? COLORS.WHITE : theme.TEXT};
     transition: all 0.1s ease 0s;
     border-radius: 5px;
 
     &:hover{
         background: ${({ isActive, theme }) => isActive ? theme.PRIMARY : theme.DIMMED};
     }
+`
+
+export const BottomNavigation = styled.div`
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0px;
+    background: ${({ theme }) => theme.CARD_BACKGROUND};
+    box-shadow: ${({ elevation }) => elevation};
+    padding: 15px 0px;
+
+    @media (max-width: ${SCREEN.SIZES.MOBILE}) {
+        bottom: 60px;
+    }
+`
+
+export const NextButtonWrapper = styled.div`
+    margin-left: 15px;
 `
