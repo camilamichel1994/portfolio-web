@@ -28,6 +28,7 @@ import {
     Bold,
     StylesList,
     CardListItem,
+    StylesListWrapper,
 } from './CreatePanelStyled'
 
 const CreatePanel = () => {
@@ -40,10 +41,13 @@ const CreatePanel = () => {
     const [icon, setIcon] = useState(ICONS.ASTERISK)
 
     const layoutList = [
-        { id: 1, alias: 'progress_bars', name: 'Progess Bars', description: "Good for showing your skill levels or a work's progress." },
-        { id: 2, alias: 'pill_collection', name: 'Pill Collection', description: 'A horizontal list of pills.' },
-        { id: 3, alias: 'basic_info', name: 'Basic Information', description: 'Use this to display basic information such as e-mail and phone number.' },
-        { id: 4, alias: 'list_view', name: 'List View', description: 'A simple vertical list of items. Be creative!' },
+        { id: 3, alias: 'basic_info', name: 'Basic Information' },
+        { id: 5, alias: 'carousel', name: 'Carousel' },
+        { id: 7, alias: 'gallery', name: 'Gallery' },
+        { id: 4, alias: 'list_view', name: 'List View' },
+        { id: 2, alias: 'pill_collection', name: 'Pill Collection' },
+        { id: 1, alias: 'progress_bars', name: 'Progess Bars' },
+        { id: 6, alias: 'simple_text', name: 'Simple Text' },
     ]
 
     return (
@@ -84,9 +88,11 @@ const CreatePanel = () => {
                 <Card title="Define a style" theme={theme} elevation={ELEVATION[1]}>
                     <SectionDescription theme={theme}>Choose a style that best fits your needs.</SectionDescription>
                     <SectionDescription theme={theme}>This can <Bold>not</Bold> be changed later.</SectionDescription>
-                    <StylesList>
-                        { renderLayoutList(layoutList, layout, setLayout, theme) }
-                    </StylesList>
+                    <StylesListWrapper>
+                        <StylesList>
+                            { renderLayoutList(layoutList, layout, setLayout, theme) }
+                        </StylesList>
+                    </StylesListWrapper>
                 </Card>
             </MainWrapper>
         </CreatePanelStyled>

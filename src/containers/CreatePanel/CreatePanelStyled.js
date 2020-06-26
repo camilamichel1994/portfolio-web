@@ -10,8 +10,13 @@ export const CreatePanelStyled = styled.div`
     display: flex;
     flex-direction: row;
 
+    @media (max-width: ${SCREEN.SIZES.TABLET}) {
+        padding: 80px 25px 25px;
+        flex-direction: column;
+    }
+
     @media (max-width: ${SCREEN.SIZES.MOBILE}) {
-        padding: 25px;
+        padding: 25px 25px 80px;
         flex-direction: column;
     }
 `
@@ -26,7 +31,6 @@ export const Tile = styled.div`
     width: 80px;
     height: 80px;
     border-radius: 15px;
-    box-shadow: ${({ color }) => ELEVATION_COLORED(color)};
     margin-right: 15px;
     display: flex;
     align-items: center;
@@ -41,11 +45,11 @@ export const Tile = styled.div`
 `
 
 export const TileMini = styled.div`
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 10px;
     background: ${({ color }) => color};
-    margin: 5px 5px 0px 0px;
+    margin: 6px 6px 0px 0px;
     cursor: pointer;
     transition: all 0.4s ease 0s;
     &:hover {
@@ -75,23 +79,31 @@ export const TileImageRow = styled.div`
 `
 
 export const SideWrapper = styled.div`
-    width: 320px;
     padding-right: 15px;
     display: flex;
     flex-direction: column;
+
+    @media (min-width: ${SCREEN.SIZES.TABLET}) {
+        width: 450px;
+    }
+
+    @media (max-width: ${SCREEN.SIZES.TABLET}) {
+        padding: 0px 0px 15px 0px;
+        flex: 1;
+    }
 `
 
 export const IconPanelWrapper = styled.div`
     margin-top: 15px;
 `
 
-export const Icon = styled(FontAwesomeIcon).attrs({ size: '1x' })`
+export const Icon = styled(FontAwesomeIcon).attrs({ size: 'lg' })`
     color: ${({ theme, maintile }) => maintile ? theme.CARD_BACKGROUND : theme.TEXT};
 `
 
 export const IconTile = styled.div`
-    width: 30px;
-    height: 30px;
+    width: 42px;
+    height: 42px;
     border: ${({ theme, isActive }) => `3px ${isActive ? theme.TEXT : theme.BACKGROUND} solid`};
     border-radius: 10px;
     background: ${({ theme }) => theme.CARD_BACKGROUND};
@@ -145,9 +157,19 @@ export const Bold = styled.span`
 
 export const StylesList = styled.div`
     display: flex;
+    flex: 1;
     flex-direction: column;
     margin-top: 25px;
     max-width: 300px;
+`
+
+export const StylesListWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: ${SCREEN.SIZES.MOBILE}) {
+        flex-direction: column;
+    }
 `
 
 export const CardListItem = styled.div`
