@@ -1,16 +1,16 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { getTheme } from '../../reducers/theme-reducer'
 import COLOR_TILES from '../../constants/colorTiles'
 import { COLORS } from '../../constants/theme'
 import ELEVATION from '../../constants/elevation'
 import Card from '../../components/Card'
-import Button from '../../components/Button'
 import ICONS from '../../constants/icons'
 import Input from '../../components/Input'
 import Textarea from '../../components/Textarea'
 import {
     CreatePanelStyled,
+    BasicWrapper,
     SectionDescription,
     Tile,
     TileMiniRow,
@@ -30,8 +30,6 @@ import {
     StylesList,
     CardListItem,
     StylesListWrapper,
-    BottomNavigation,
-    NextButtonWrapper,
 } from './CreatePanelStyled'
 
 const CreatePanel = () => {
@@ -40,7 +38,7 @@ const CreatePanel = () => {
     const [layout, setLayout] = useState({ id: 1, alias: 'basic_info', name: 'Basic Information' })
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    const [color, setColor] = useState(COLORS.PRIMARY)
+    const [color, setColor] = useState(COLOR_TILES.PRIMARY.name)
     const [icon, setIcon] = useState(ICONS.ASTERISK)
 
     const layoutList = [
@@ -54,8 +52,8 @@ const CreatePanel = () => {
     ]
 
     return (
-        <Fragment>
-            <CreatePanelStyled>
+        <CreatePanelStyled>
+            <BasicWrapper>
                 <SideWrapper>
                     <Card title="Basic details" theme={theme} elevation={ELEVATION[1]}>
                         <SectionDescription theme={theme}>Describe your panel's basic information.</SectionDescription>
@@ -99,31 +97,32 @@ const CreatePanel = () => {
                         <IconsWrapper>{ renderIcons(icon, setIcon, theme) }</IconsWrapper>
                     </Card>
                 </MainWrapper>
-            </CreatePanelStyled>
-            <BottomNavigation theme={theme} elevation={ELEVATION[2]}>
-                <Button title="Back" outlined />
-                <NextButtonWrapper>
-                    <Button title="Next" />
-                </NextButtonWrapper>
-            </BottomNavigation>
-        </Fragment>
+            </BasicWrapper>
+            <StylePanelWrapper>
+                <Card title="Panel data" theme={theme} elevation={ELEVATION[1]}>
+                    <SectionDescription theme={theme}>The content of your Panel goes here.</SectionDescription>
+                    <SectionDescription theme={theme}>Be creative!</SectionDescription>
+                </Card>
+            </StylePanelWrapper>
+            <StylePanelWrapper>
+                <Card title="Preview" theme={theme} elevation={ELEVATION[1]}>
+                    <SectionDescription theme={theme}>This is how your Panel is going to look like.</SectionDescription>
+                    <SectionDescription theme={theme}>What do you think?</SectionDescription>
+                </Card>
+            </StylePanelWrapper>
+        </CreatePanelStyled>
     )
 }
 
-const renderColors = setColor => [
-    <TileMini key={COLOR_TILES.PRIMARY} color={COLORS.PRIMARY} onClick={() => setColor(COLORS.PRIMARY)} />,
-    <TileMini key={COLOR_TILES.GREEN} color={COLORS.GREEN} onClick={() => setColor(COLORS.GREEN)} />,
-    <TileMini key={COLOR_TILES.RED} color={COLORS.RED} onClick={() => setColor(COLORS.RED)} />,
-    <TileMini key={COLOR_TILES.YELLOW} color={COLORS.YELLOW} onClick={() => setColor(COLORS.YELLOW)} />,
-    <TileMini key={COLOR_TILES.BLUE} color={COLORS.BLUE} onClick={() => setColor(COLORS.BLUE)} />,
-    <TileMini key={COLOR_TILES.CYAN} color={COLORS.CYAN} onClick={() => setColor(COLORS.CYAN)} />,
-    <TileMini key={COLOR_TILES.PURPLE} color={COLORS.PURPLE} onClick={() => setColor(COLORS.PURPLE)} />,
-    <TileMini key={COLOR_TILES.ORANGE} color={COLORS.ORANGE} onClick={() => setColor(COLORS.ORANGE)} />,
-    <TileMini key={COLOR_TILES.PINK} color={COLORS.PINK} onClick={() => setColor(COLORS.PINK)} />,
-    <TileMini key={COLOR_TILES.BROWN} color={COLORS.BROWN} onClick={() => setColor(COLORS.BROWN)} />,
-    <TileMini key={COLOR_TILES.LAVANDER} color={COLORS.LAVANDER} onClick={() => setColor(COLORS.LAVANDER)} />,
-    <TileMini key={COLOR_TILES.LEMON} color={COLORS.LEMON} onClick={() => setColor(COLORS.LEMON)} />,
-]
+const renderColors = setColor => {
+    const colors = []
+    Object.entries(COLOR_TILES).forEach(color => {
+        colors.push(
+            <TileMini key={color[1].name} color={color[1].color} onClick={() => setColor(color[1].name)} />
+        )
+    })
+    return colors
+}
 
 const renderIcons = (activeIcon, setIcon, theme) => {
     const icons = []

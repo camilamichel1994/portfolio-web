@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import SCREEN from '../../constants/screen'
 import TYPOGRAPHY from '../../constants/typography'
 import { COLORS } from '../../constants/theme'
+import COLOR_TILES from '../../constants/colorTiles'
 import ELEVATION, { ELEVATION_COLORED } from '../../constants/elevation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -9,15 +10,21 @@ export const CreatePanelStyled = styled.div`
     padding: 80px 25px 95px 25px;
     width: 1100px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
     @media (max-width: ${SCREEN.SIZES.TABLET}) {
         padding: 80px 25px 95px;
-        flex-direction: column;
     }
-
     @media (max-width: ${SCREEN.SIZES.MOBILE}) {
-        padding: 0px 0px 140px;
+        padding: 0px 0px 65px;
+    }
+`
+
+export const BasicWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: ${SCREEN.SIZES.TABLET}) {
         flex-direction: column;
     }
 `
@@ -39,7 +46,7 @@ export const Tile = styled.div`
     font-size: 40px;
     font-weight: bold;
     transition: all 0.4s ease 0s;
-    background: ${({ image, color }) => image ? `url(${image})` : color};
+    background: ${({ image, color }) => image ? `url(${image})` : COLOR_TILES[color].color};
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -190,25 +197,4 @@ export const CardListItem = styled.div`
     &:hover{
         background: ${({ isActive, theme }) => isActive ? theme.PRIMARY : theme.DIMMED};
     }
-`
-
-export const BottomNavigation = styled.div`
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    bottom: 0px;
-    background: ${({ theme }) => theme.CARD_BACKGROUND};
-    box-shadow: ${({ elevation }) => elevation};
-    padding: 15px 0px;
-
-    @media (max-width: ${SCREEN.SIZES.MOBILE}) {
-        bottom: 60px;
-    }
-`
-
-export const NextButtonWrapper = styled.div`
-    margin-left: 15px;
 `

@@ -11,7 +11,7 @@ export const COLORS = {
     DARKER: '#15202B',
     GREEN: '#129A7D',
     RED: '#D92027',
-    YELLOW: '#D1A958',
+    YELLOW: '#fff8a6',
     BLUE: '#1B6CA8',
     CYAN: '#0E9AA7',
     PURPLE: '#5c2a9d',
@@ -21,6 +21,10 @@ export const COLORS = {
     CLEAR: '#F6F8FA',
     LAVANDER: '#726A95',
     LEMON: '#BBEAA6',
+    MOSS: '#445c3c',
+    SUNSET: '#f46060',
+    MUSTARD: '#D1A958',
+    BLUE_LIGHT: '#6886c5',
 }
 
 export const FIELDS = {
