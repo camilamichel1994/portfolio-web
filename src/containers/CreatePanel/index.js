@@ -8,6 +8,7 @@ import Card from '../../components/Card'
 import ICONS from '../../constants/icons'
 import Input from '../../components/Input'
 import Textarea from '../../components/Textarea'
+import Button from '../../components/Button'
 import {
     CreatePanelStyled,
     BasicWrapper,
@@ -30,6 +31,7 @@ import {
     StylesList,
     CardListItem,
     StylesListWrapper,
+    CreateButtonWrapper,
 } from './CreatePanelStyled'
 
 const CreatePanel = () => {
@@ -85,9 +87,21 @@ const CreatePanel = () => {
                         <Card title="What should it be called?" theme={theme} elevation={ELEVATION[1]}>
                             <SectionDescription theme={theme}>You can always change this later.</SectionDescription>
                             <FormWrapper>
-                                <Input label="Title" theme={theme} required />
+                                <Input value={title} label="Title" theme={theme} required
+                                    onChange={e => {
+                                        const input = e.target.value
+                                        setIsValid(input && description)
+                                        setTitle(input)
+                                    }}
+                                />
                                 <DescriptionWrapper>
-                                    <Textarea label="Short description" theme={theme} required />
+                                    <Textarea value={description} label="Short description" theme={theme} required
+                                        onChange={e => {
+                                            const input = e.target.value
+                                            setIsValid(input && title)
+                                            setDescription(input)
+                                        }}
+                                    />
                                 </DescriptionWrapper>
                             </FormWrapper>
                         </Card>
@@ -110,6 +124,10 @@ const CreatePanel = () => {
                     <SectionDescription theme={theme}>What do you think?</SectionDescription>
                 </Card>
             </StylePanelWrapper>
+            <CreateButtonWrapper>
+                <Button round title="Create new Panel" disabled={!isValid}
+                    onClick={() => submit(isValid, layout, title, description, color, icon)} />
+            </CreateButtonWrapper>
         </CreatePanelStyled>
     )
 }
@@ -152,6 +170,16 @@ const renderLayoutList = (layouts, activeLayout, setLayout, theme) => {
         )
     })
     return list
+}
+
+const submit = (isValid, layout, title, description, color, icon) => {
+    if (isValid) {
+        console.log('layout', layout)
+        console.log('title', title)
+        console.log('description', description)
+        console.log('color', color)
+        console.log('icon', icon)
+    }
 }
 
 export default CreatePanel

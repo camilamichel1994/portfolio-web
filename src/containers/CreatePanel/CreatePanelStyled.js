@@ -198,3 +198,10 @@ export const CardListItem = styled.div`
         background: ${({ isActive, theme }) => isActive ? theme.PRIMARY : theme.DIMMED};
     }
 `
+
+export const CreateButtonWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+`
