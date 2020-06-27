@@ -13,10 +13,10 @@ export const CreatePanelStyled = styled.div`
     flex-direction: column;
 
     @media (max-width: ${SCREEN.SIZES.TABLET}) {
-        padding: 80px 25px 95px;
+        padding: 80px 25px 25px;
     }
     @media (max-width: ${SCREEN.SIZES.MOBILE}) {
-        padding: 0px 0px 65px;
+        padding: 0px 0px 95px;
     }
 `
 
@@ -205,3 +205,11 @@ export const CreateButtonWrapper = styled.div`
     align-items: center;
     margin-top: 30px;
 `
+
+export const PreviewWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+`
+

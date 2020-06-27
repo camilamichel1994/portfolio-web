@@ -9,6 +9,7 @@ import ICONS from '../../constants/icons'
 import Input from '../../components/Input'
 import Textarea from '../../components/Textarea'
 import Button from '../../components/Button'
+import PanelItem from '../../components/PanelItem'
 import {
     CreatePanelStyled,
     BasicWrapper,
@@ -32,6 +33,7 @@ import {
     CardListItem,
     StylesListWrapper,
     CreateButtonWrapper,
+    PreviewWrapper,
 } from './CreatePanelStyled'
 
 const CreatePanel = () => {
@@ -122,6 +124,13 @@ const CreatePanel = () => {
                 <Card title="Preview" theme={theme} elevation={ELEVATION[1]}>
                     <SectionDescription theme={theme}>This is how your Panel is going to look like.</SectionDescription>
                     <SectionDescription theme={theme}>What do you think?</SectionDescription>
+                    <PreviewWrapper>
+                        <PanelItem theme={theme} color={COLORS[color]} icon={icon.ICON}
+                            title={title ? title : 'My awesome title'}
+                            description={description ? description : 'Briefly describe your Panel here.'}>
+                            foo bar
+                        </PanelItem>
+                    </PreviewWrapper>
                 </Card>
             </StylePanelWrapper>
             <CreateButtonWrapper>
