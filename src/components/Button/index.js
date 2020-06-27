@@ -12,6 +12,7 @@ const Button = props => {
 
 Button.propTypes = {
     title: PropTypes.string.isRequired,
+    theme: PropTypes.object.isRequired,
     disabled: PropTypes.bool,
     outlined: PropTypes.bool,
     color: PropTypes.string,

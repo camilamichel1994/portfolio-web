@@ -134,7 +134,7 @@ const CreatePanel = () => {
                 </Card>
             </StylePanelWrapper>
             <CreateButtonWrapper>
-                <Button round title="Create new Panel" disabled={!isValid}
+                <Button round title="Create new Panel" disabled={!isValid} theme={theme}
                     onClick={() => submit(isValid, layout, title, description, color, icon)} />
             </CreateButtonWrapper>
         </CreatePanelStyled>
