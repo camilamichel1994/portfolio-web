@@ -35,6 +35,10 @@ export const ProfileWrapper = styled.div`
 
 export const MainWrapper = styled.div`
     padding-top: 15px;
+
+    @media (max-width: ${SCREEN.SIZES.MOBILE}) {
+        padding-top: 0px;
+    }
 `
 
 export const Tabs = styled.div`
