@@ -7,7 +7,7 @@ export const PanelItemStyled = styled.div`
     flex-direction: row;
     flex: 1;
     padding: 15px 0px;
-    align-items: flex-start;
+    align-items: center;
     cursor: pointer;
 `
 
@@ -25,7 +25,7 @@ export const Icon = styled(FontAwesomeIcon).attrs({ size: '2x' })`
     color: ${({ theme }) => theme.CARD_BACKGROUND};
 `
 
-export const ArrowIcon = styled(FontAwesomeIcon).attrs({ size: '2x' })`
+export const ArrowIcon = styled(FontAwesomeIcon).attrs({ size: 'lg' })`
     color: ${({ theme }) => theme.TEXT};
     -webkit-transition-duration: 0.4s;
     -moz-transition-duration: 0.4s;
