@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const colorSwitcher = (theme, isValid) => isValid ? theme.TEXT : theme.FIELDS.DANGER
 
 export const InputStyled = styled.div`
-    border: ${({ theme, isValid }) => `3px ${colorSwitcher(theme, isValid)} solid`};
+    border: ${({ theme, isValid }) => `2px ${colorSwitcher(theme, isValid)} solid`};
     width: ${(width) => width ? width : ''};
     border-radius: 5px;
     display: flex;
@@ -68,12 +68,12 @@ export const LabelRequiredWrapper = styled.div`
     align-items: center;
 `
 
-export const StartIcon = styled(FontAwesomeIcon).attrs({ size: 'lg' })`
+export const StartIcon = styled(FontAwesomeIcon).attrs({ size: '1x' })`
     color: ${({ theme, isvalid }) => colorSwitcher(theme, isvalid === 'true')};
     padding-left: 10px;
 `
 
-export const EndIcon = styled(FontAwesomeIcon).attrs({ size: 'lg' })`
+export const EndIcon = styled(FontAwesomeIcon).attrs({ size: '1x' })`
     color: ${({ theme, isvalid }) => colorSwitcher(theme, isvalid === 'true')};
     padding-right: 10px;
 `

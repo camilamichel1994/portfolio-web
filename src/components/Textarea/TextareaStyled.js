@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const colorSwitcher = (theme, isValid) => isValid ? theme.TEXT : theme.FIELDS.DANGER
 
 export const TextareaStyled = styled.div`
-    border: ${({ theme, isValid }) => `3px ${colorSwitcher(theme, isValid)} solid`};
+    border: ${({ theme, isValid }) => `2px ${colorSwitcher(theme, isValid)} solid`};
     width: ${(width) => width ? width : ''};
     border-radius: 5px;
     display: flex;

@@ -16,7 +16,7 @@ export const ButtonStyled = styled.div`
         if (small && outlined) return '7px'
         if (small) return '10px'
         if (outlined) return '11px 18px'
-        return '14px 18px'
+        return '12px 18px'
     }};
     width: max-content;
     border-radius: ${({ round }) => round ? '50px' : '5px'};

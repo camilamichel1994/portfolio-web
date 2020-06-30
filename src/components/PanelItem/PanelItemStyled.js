@@ -62,10 +62,8 @@ export const Description = styled.div`
 export const AreaWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    flex: 1;
 `
 
 export const ContentArea = styled.div`
     padding: 20px;
-    border-bottom: ${({ theme }) => `1px ${theme.DISABLED} solid`};
 `

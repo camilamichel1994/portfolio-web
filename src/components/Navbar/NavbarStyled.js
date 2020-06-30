@@ -96,7 +96,7 @@ export const BrandSearchWrapper = styled.div`
 export const SearchWrapper = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    align-items: center;
 `
 
 export const SearchInput = styled.input`

@@ -28,7 +28,7 @@ const Navbar = props => {
                         <Brand theme={props.theme}>Portfolio</Brand>
                     </LinkStyled>
                     <SearchWrapper>
-                        <SearchIcon icon={faSearch} size="lg" theme={props.theme} />
+                        <SearchIcon icon={faSearch} size="1x" theme={props.theme} />
                         <SearchInput theme={props.theme} placeholder="search..." />
                     </SearchWrapper>
                 </BrandSearchWrapper>

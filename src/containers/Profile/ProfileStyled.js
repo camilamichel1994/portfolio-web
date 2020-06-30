@@ -64,8 +64,7 @@ export const Tab = styled.div`
 
 export const TabContent = styled.div`
     display: flex;
-    margin: 30px 0px;
-    flex: 1;
+    margin-top: 20px;
 `
 
 export const PhotosWrapper = styled.div`
