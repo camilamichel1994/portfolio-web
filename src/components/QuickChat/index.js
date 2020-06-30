@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import MessageItem from '../MessageItem'
+import Card from '../Card'
 import {
-    QuickChatStyled,
-    CardTitle,
     SeeMore,
     SeeMoreIcon,
     LinkStyled,
@@ -13,8 +12,7 @@ import {
 const QuickChat = props => {
     
     return (
-        <QuickChatStyled theme={props.theme} elevation={props.elevation}>
-            <CardTitle theme={props.theme}>Messages</CardTitle>
+        <Card theme={props.theme} elevation={props.elevation} title="Messages" spaced>
             { renderMessages(props.theme) }
             <SeeMore theme={props.theme}>
                 <LinkStyled to="/">
@@ -22,7 +20,7 @@ const QuickChat = props => {
                     See more
                 </LinkStyled>
             </SeeMore>
-        </QuickChatStyled>
+        </Card>
     )
 }
 
