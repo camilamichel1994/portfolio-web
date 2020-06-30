@@ -12,9 +12,9 @@ export const MessageItemStyled = styled.div`
 export const ProfileImage = styled.div`
     background: url(${({ image }) => image}) no-repeat center;
     background-size: cover;
-    width: 50px;
-    height: 50px;
-    border-radius: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
 `
 
 export const NameImageWrapper = styled.div`
@@ -26,9 +26,14 @@ export const NameImageWrapper = styled.div`
 
 export const Name = styled.div`
     font-size: ${TYPOGRAPHY.SIZE.TEXT};
-    color: ${({ theme }) => theme.TITLE};
-    font-weight: 500;
-    margin-left: 10px;
+    color: ${({ theme }) => theme.TEXT};
+    font-weight: bold;
+`
+
+export const Text = styled.div`
+    font-size: ${TYPOGRAPHY.SIZE.SUBTEXT};
+    color: ${({ theme }) => theme.SUBTEXT};
+    margin-top: 5px;
 `
 
 export const Online = styled.div`
@@ -37,4 +42,10 @@ export const Online = styled.div`
     height: 10px;
     border-radius: 50%;
     margin-right: 10px;
+`
+
+export const NameTextWrapper = styled.div`
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
 `

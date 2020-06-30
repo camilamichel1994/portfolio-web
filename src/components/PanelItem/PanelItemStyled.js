@@ -6,8 +6,8 @@ export const PanelItemStyled = styled.div`
     display: flex;
     flex-direction: row;
     flex: 1;
-    padding: 20px 0px;
-    align-items: center;
+    padding: 15px 0px;
+    align-items: flex-start;
     cursor: pointer;
 `
 
@@ -22,7 +22,7 @@ export const IconBox = styled.div`
 `
 
 export const Icon = styled(FontAwesomeIcon).attrs({ size: '2x' })`
-    color: ${({ theme }) => theme.BACKGROUND};
+    color: ${({ theme }) => theme.CARD_BACKGROUND};
 `
 
 export const ArrowIcon = styled(FontAwesomeIcon).attrs({ size: '2x' })`
@@ -55,7 +55,7 @@ export const Title = styled.div`
 
 export const Description = styled.div`
     color: ${({ theme }) => theme.TEXT};
-    font-size: ${TYPOGRAPHY.SIZE.TEXT};
+    font-size: ${TYPOGRAPHY.SIZE.SUBTEXT};
     margin-top: 5px;
 `
 

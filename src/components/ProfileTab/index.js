@@ -30,7 +30,7 @@ const ProfileTab = props => (
             <Input theme={props.theme} startIcon={icons['faSearch']} />
             <AddPanelWrapper>
                 <LinkStyled to="/new-panel">
-                    <Button title="Add Panel" />
+                    <Button title="Add Panel" theme={props.theme} />
                 </LinkStyled>
             </AddPanelWrapper>
         </SearchAddWrapper>

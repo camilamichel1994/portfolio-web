@@ -12,9 +12,12 @@ const Button = props => {
 
 Button.propTypes = {
     title: PropTypes.string.isRequired,
+    theme: PropTypes.object.isRequired,
     disabled: PropTypes.bool,
     outlined: PropTypes.bool,
     color: PropTypes.string,
+    small: PropTypes.bool,
+    round: PropTypes.bool,
 }
 
 Button.defaultProps = {
@@ -22,6 +25,8 @@ Button.defaultProps = {
     disabled: false,
     outlined: false,
     color: null,
+    small: false,
+    round: false,
 }
 
 export default Button

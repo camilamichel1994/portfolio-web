@@ -6,6 +6,8 @@ import {
     NameImageWrapper,
     Name,
     Online,
+    Text,
+    NameTextWrapper,
 } from './MessageItemStyled'
 
 const MessageItem = props => {
@@ -13,7 +15,10 @@ const MessageItem = props => {
         <MessageItemStyled>
             <NameImageWrapper>
                 <ProfileImage image={props.image} />
-                <Name theme={props.theme}>{props.firstName} {props.lastName}</Name>
+                <NameTextWrapper>
+                    <Name theme={props.theme}>{props.firstName} {props.lastName}</Name>
+                    <Text theme={props.theme}>{props.text}</Text>
+                </NameTextWrapper>
             </NameImageWrapper>
             {props.isOnline && <Online theme={props.theme} />}
         </MessageItemStyled>
@@ -25,6 +30,7 @@ MessageItem.propTypes = {
     isOnline: PropTypes.bool,
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
 }
 
 MessageItem.defaultTypes = {

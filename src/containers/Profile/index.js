@@ -6,19 +6,23 @@ import { getUser } from '../../reducers/user-reducer'
 import ProfileCard from '../../components/ProfileCard'
 import QuickChat from '../../components/QuickChat'
 import ELEVATION from '../../constants/elevation'
-import TYPOGRAPHY from '../../constants/typography'
 import PROFILE from '../../constants/profile'
 import ProfileTab from '../../components/ProfileTab'
 import ContactsTab from '../../components/ContactsTab'
 import PostsTab from '../../components/PostsTab'
+import Card from '../../components/Card'
 import {
     ProfileStyled,
-    ChatWrapper,
+    SideWrapper,
     ProfileWrapper,
-    MainView,
+    MainWrapper,
     Tabs,
     Tab,
     TabContent,
+    PhotosWrapper,
+    PhotosRow,
+    PhotosColumn,
+    Photo,
 } from './ProfileStyled'
 
 const renderSelectedTab = (index, theme) => {
@@ -34,6 +38,22 @@ const renderSelectedTab = (index, theme) => {
     }
 }
 
+const renderPhotos = theme => {
+    return (
+        <PhotosColumn>
+            <PhotosRow>
+                <Photo image="https://dummyimage.com/100x100/e12f5e/ffffff.png" />
+                <Photo image="https://dummyimage.com/100x100/129A7D/ffffff.png" />
+                <Photo image="https://dummyimage.com/100x100/726A95/ffffff.png" />
+            </PhotosRow>
+            <PhotosRow>
+                <Photo image="https://dummyimage.com/100x100/0E9AA7/ffffff.png" />
+                <Photo image="https://dummyimage.com/100x100/BBEAA6/ffffff.png" />
+            </PhotosRow>
+        </PhotosColumn>
+    )
+}
+
 const Profile = () => {
     const { value: theme } = useSelector(getTheme)
     const { style: profileStyle } = useSelector(getProfile)
@@ -43,21 +63,28 @@ const Profile = () => {
     return (
         <ProfileStyled theme={theme}>
             <ProfileWrapper>
-                <ProfileCard theme={theme} data={user} model={profileStyle} />
-                <MainView>
-                    <Tabs>
-                        <Tab theme={theme} isSelected={selectedTab === PROFILE.TABS.PROFILE} onClick={() => setSelectedTab(PROFILE.TABS.PROFILE)}>Profile</Tab>
-                        <Tab theme={theme} isSelected={selectedTab === PROFILE.TABS.POSTS} onClick={() => setSelectedTab(PROFILE.TABS.POSTS)}>Posts</Tab>
-                        <Tab theme={theme} isSelected={selectedTab === PROFILE.TABS.CONTACTS} onClick={() => setSelectedTab(PROFILE.TABS.CONTACTS)}>Contacts</Tab>
-                    </Tabs>
-                    <TabContent>
-                        { renderSelectedTab(selectedTab, theme) }
-                    </TabContent>
-                </MainView>
+                <ProfileCard theme={theme} data={user} model={profileStyle} elevation={ELEVATION[1]} />
+                <MainWrapper>
+                    <Card theme={theme} elevation={ELEVATION[1]}>
+                        <Tabs>
+                            <Tab theme={theme} isSelected={selectedTab === PROFILE.TABS.PROFILE} onClick={() => setSelectedTab(PROFILE.TABS.PROFILE)}>Profile</Tab>
+                            <Tab theme={theme} isSelected={selectedTab === PROFILE.TABS.POSTS} onClick={() => setSelectedTab(PROFILE.TABS.POSTS)}>Updates</Tab>
+                            <Tab theme={theme} isSelected={selectedTab === PROFILE.TABS.CONTACTS} onClick={() => setSelectedTab(PROFILE.TABS.CONTACTS)}>Contacts</Tab>
+                        </Tabs>
+                        <TabContent>
+                            { renderSelectedTab(selectedTab, theme) }
+                        </TabContent>
+                    </Card>
+                </MainWrapper>
             </ProfileWrapper>
-            <ChatWrapper>
+            <SideWrapper>
                 <QuickChat theme={theme} elevation={ELEVATION[1]} />
-            </ChatWrapper>
+                <PhotosWrapper>
+                    <Card theme={theme} elevation={ELEVATION[1]} title="Photos">
+                        { renderPhotos(theme) }
+                    </Card>
+                </PhotosWrapper>
+            </SideWrapper>
         </ProfileStyled>
     )
 }

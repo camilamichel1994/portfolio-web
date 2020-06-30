@@ -39,12 +39,16 @@ const PanelItem = props => {
 
 PanelItem.propTypes = {
     theme: PropTypes.object.isRequired,
-    color: PropTypes.string,
+    color: PropTypes.string.isRequired,
     icon: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
 }
 
 PanelItem.defaultTypes = {
     color: 'grey',
+    title: '',
+    description: '',
 }
 
 export default PanelItem

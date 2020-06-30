@@ -3,12 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import TYPOGRAPHY from '../../constants/typography'
 import PROFILE from '../../constants/profile'
+import { COLORS, THEME_NAME } from '../../constants/theme'
 
 export const ProfileCardStyled = styled.div`
     background: url(${({ image }) => image}) no-repeat center;
     background-size: cover;
     height: 480px;
-    border-radius: 5px;
+    border-radius: 10px;
+    box-shadow: ${({ elevation }) => elevation};
+    border: ${({ theme }) => `2px ${theme.NAME === THEME_NAME.MIDNIGHT ? COLORS.DARK : 'none'} solid` };
 `
 
 export const Gradient = styled.div`
@@ -31,6 +34,7 @@ export const Gradient = styled.div`
     justify-content: flex-end;
     padding: 0px 20px;
     height: 480px;
+    border-radius: 10px;
 `
 
 export const ProfileImage = styled.div`
