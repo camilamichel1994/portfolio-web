@@ -44,6 +44,7 @@ const CreatePanel = () => {
     const [description, setDescription] = useState('')
     const [color, setColor] = useState(COLOR_TILES.PRIMARY.name)
     const [icon, setIcon] = useState(ICONS.ASTERISK)
+    const elevationLevel = 0
 
     const layoutList = [
         { id: 1, alias: 'basic_info', name: 'Basic Information' },
@@ -59,7 +60,7 @@ const CreatePanel = () => {
         <CreatePanelStyled>
             <BasicWrapper>
                 <SideWrapper>
-                    <Card title="Basic details" theme={theme} elevation={ELEVATION[1]}>
+                    <Card title="Basic details" theme={theme} elevation={ELEVATION[elevationLevel]}>
                         <SectionDescription theme={theme}>Describe your panel's basic information.</SectionDescription>
                         <SectionDescription theme={theme}>What should it look like?</SectionDescription>
                         <TileImageRow>
@@ -73,7 +74,7 @@ const CreatePanel = () => {
                         </TileMiniRow>
                     </Card>
                     <StylePanelWrapper>
-                        <Card title="Define a style" theme={theme} elevation={ELEVATION[1]}>
+                        <Card title="Define a style" theme={theme} elevation={ELEVATION[elevationLevel]}>
                             <SectionDescription theme={theme}>Choose a style that best fits your needs.</SectionDescription>
                             <SectionDescription theme={theme}>This can <Bold>not</Bold> be changed later.</SectionDescription>
                             <StylesListWrapper>
@@ -86,7 +87,7 @@ const CreatePanel = () => {
                 </SideWrapper>
                 <MainWrapper>
                     <TitleCardWrapper>
-                        <Card title="What should it be called?" theme={theme} elevation={ELEVATION[1]}>
+                        <Card title="What should it be called?" theme={theme} elevation={ELEVATION[elevationLevel]}>
                             <SectionDescription theme={theme}>You can always change this later.</SectionDescription>
                             <FormWrapper>
                                 <Input value={title} label="Title" theme={theme} required
@@ -108,20 +109,20 @@ const CreatePanel = () => {
                             </FormWrapper>
                         </Card>
                     </TitleCardWrapper>
-                    <Card title="What best defines it?" theme={theme} elevation={ELEVATION[1]}>
+                    <Card title="What best defines it?" theme={theme} elevation={ELEVATION[elevationLevel]}>
                         <SectionDescription theme={theme}>Choose an icon to represent your panel.</SectionDescription>
                         <IconsWrapper>{ renderIcons(icon, setIcon, theme) }</IconsWrapper>
                     </Card>
                 </MainWrapper>
             </BasicWrapper>
             <StylePanelWrapper>
-                <Card title="Panel data" theme={theme} elevation={ELEVATION[1]}>
+                <Card title="Panel data" theme={theme} elevation={ELEVATION[elevationLevel]}>
                     <SectionDescription theme={theme}>The content of your Panel goes here.</SectionDescription>
                     <SectionDescription theme={theme}>Be creative!</SectionDescription>
                 </Card>
             </StylePanelWrapper>
             <StylePanelWrapper>
-                <Card title="Preview" theme={theme} elevation={ELEVATION[1]}>
+                <Card title="Preview" theme={theme} elevation={ELEVATION[elevationLevel]}>
                     <SectionDescription theme={theme}>This is how your Panel is going to look like.</SectionDescription>
                     <SectionDescription theme={theme}>What do you think?</SectionDescription>
                     <PreviewWrapper>

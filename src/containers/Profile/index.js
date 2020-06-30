@@ -59,13 +59,14 @@ const Profile = () => {
     const { style: profileStyle } = useSelector(getProfile)
     const user = useSelector(getUser)
     const [selectedTab, setSelectedTab] = useState(PROFILE.TABS.PROFILE)
+    const elevationLevel = 0
 
     return (
         <ProfileStyled theme={theme}>
             <ProfileWrapper>
-                <ProfileCard theme={theme} data={user} model={profileStyle} elevation={ELEVATION[1]} />
+                <ProfileCard theme={theme} data={user} model={profileStyle} elevation={ELEVATION[elevationLevel]} />
                 <MainWrapper>
-                    <Card theme={theme} elevation={ELEVATION[1]}>
+                    <Card theme={theme} elevation={ELEVATION[elevationLevel]}>
                         <Tabs>
                             <Tab theme={theme} isSelected={selectedTab === PROFILE.TABS.PROFILE} onClick={() => setSelectedTab(PROFILE.TABS.PROFILE)}>Profile</Tab>
                             <Tab theme={theme} isSelected={selectedTab === PROFILE.TABS.POSTS} onClick={() => setSelectedTab(PROFILE.TABS.POSTS)}>Updates</Tab>
@@ -78,9 +79,9 @@ const Profile = () => {
                 </MainWrapper>
             </ProfileWrapper>
             <SideWrapper>
-                <QuickChat theme={theme} elevation={ELEVATION[1]} />
+                <QuickChat theme={theme} elevation={ELEVATION[elevationLevel]} />
                 <PhotosWrapper>
-                    <Card theme={theme} elevation={ELEVATION[1]} title="Photos">
+                    <Card theme={theme} elevation={ELEVATION[elevationLevel]} title="Photos">
                         { renderPhotos(theme) }
                     </Card>
                 </PhotosWrapper>

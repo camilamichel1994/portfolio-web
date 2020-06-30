@@ -13,6 +13,6 @@ export const HomeStyled = styled.div`
     }
     @media (max-width: ${SCREEN.SIZES.MOBILE}) {
         flex: 1;
-        padding: 65px 0px 0px 0px;
+        padding: 0px 0px 65px 0px;
     }
 `
