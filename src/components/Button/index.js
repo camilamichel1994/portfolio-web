@@ -1,11 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ButtonStyled } from './ButtonStyled'
+import {
+    ButtonStyled,
+    Icon,
+} from './ButtonStyled'
 
 const Button = props => {
     return (
         <ButtonStyled {...props}>
             { props.title }
+            { props.icon && <Icon icon={props.icon}  />}
         </ButtonStyled>
     )
 }
@@ -18,6 +22,7 @@ Button.propTypes = {
     color: PropTypes.string,
     small: PropTypes.bool,
     round: PropTypes.bool,
+    icon: PropTypes.object,
 }
 
 Button.defaultProps = {

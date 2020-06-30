@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { FIELDS, THEME_NAME } from '../../constants/theme'
 import TYPOGRAPHY from '../../constants/typography'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const themeSwitcher = (color, disabled, outlined, theme) => {
     if (outlined) return 'transparent'
@@ -8,6 +9,11 @@ const themeSwitcher = (color, disabled, outlined, theme) => {
     return color ?
         FIELDS[color.toUpperCase()] || theme.PRIMARY :
         theme.PRIMARY
+}
+
+const getColor = (color, disabled, theme) => {
+    if (disabled) return theme.CARD_BACKGROUND
+    return color ? FIELDS[color.toUpperCase()] : theme.CARD_BACKGROUND
 }
 
 export const ButtonStyled = styled.div`
@@ -20,7 +26,7 @@ export const ButtonStyled = styled.div`
     }};
     width: max-content;
     border-radius: ${({ round }) => round ? '50px' : '5px'};
-    color: ${({ outlined, color, disabled, theme }) => !outlined ? FIELDS.TEXT : themeSwitcher(color, disabled, theme)};
+    color: ${({ disabled, color, theme }) => getColor(color, disabled, theme)};
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease 0s;
@@ -46,4 +52,9 @@ export const ButtonStyled = styled.div`
         box-shadow: none;
         transform: translateY(0px);
     }
+`
+
+export const Icon = styled(FontAwesomeIcon).attrs({ size: '1x' })`
+    color: ${({ outlined, color, disabled, theme }) => themeSwitcher(color, disabled, outlined, theme)};
+    padding: 0px 5px 0px 10px;
 `
