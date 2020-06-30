@@ -4,7 +4,6 @@ import TYPOGRAPHY from '../../constants/typography'
 
 export const PanelItemStyled = styled.div`
     display: flex;
-    flex-direction: row;
     flex: 1;
     padding: 15px 0px;
     align-items: center;
@@ -62,6 +61,7 @@ export const Description = styled.div`
 export const AreaWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    flex: 1;
 `
 
 export const ContentArea = styled.div`

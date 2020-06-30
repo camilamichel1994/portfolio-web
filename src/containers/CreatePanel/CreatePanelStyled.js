@@ -208,8 +208,7 @@ export const CreateButtonWrapper = styled.div`
 
 export const PreviewWrapper = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex: 1;
     margin-top: 25px;
 `
 
