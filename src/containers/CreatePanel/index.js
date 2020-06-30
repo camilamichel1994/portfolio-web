@@ -127,7 +127,7 @@ const CreatePanel = () => {
                     <PreviewWrapper>
                         <PanelItem theme={theme} color={COLORS[color]} icon={icon.ICON}
                             title={title ? title : 'My awesome title'}
-                            description={description ? description : 'Briefly describe your Panel here.'}>
+                            description={description ? description : 'The description of your Panel will be displayed here.'}>
                             foo bar
                         </PanelItem>
                     </PreviewWrapper>

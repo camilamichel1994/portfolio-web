@@ -8,7 +8,7 @@ export const CardStyled = styled.div`
     background: ${({theme}) => theme.CARD_BACKGROUND};
     padding: ${({ spaced }) => spaced ? '0px' : '20px'};
     box-shadow: ${({elevation}) => elevation};
-    border-radius: 5px;
+    border-radius: 10px;
     flex: 1;
     border: ${({ theme }) => `2px ${theme.NAME === THEME_NAME.MIDNIGHT ? COLORS.DARK : 'none'} solid` };
     height: ${({ height }) => height ? height : ''};

@@ -10,7 +10,7 @@ export const QuickChatStyled = styled.div`
     flex-direction: column;
     background: ${({theme}) => theme.CARD_BACKGROUND};
     box-shadow: ${({elevation}) => elevation};
-    border-radius: 5px;
+    border-radius: 10px;
     flex: 1;
     border: ${({ theme }) => `2px ${theme.NAME === THEME_NAME.MIDNIGHT ? COLORS.DARK : 'none'} solid` };
 `
