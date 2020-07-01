@@ -9,13 +9,22 @@ const Button = props => {
     return (
         <ButtonStyled {...props}>
             { props.title }
-            { props.icon && <Icon icon={props.icon}  />}
+            { props.icon && 
+                <Icon
+                    title={props.title}
+                    icon={props.icon}
+                    color={props.color}
+                    theme={props.theme}
+                    outlined={props.outlined.toString()}
+                    disabled={props.disabled}
+                />
+            }
         </ButtonStyled>
     )
 }
 
 Button.propTypes = {
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     theme: PropTypes.object.isRequired,
     disabled: PropTypes.bool,
     outlined: PropTypes.bool,
@@ -26,7 +35,7 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-    title: 'Button',
+    title: null,
     disabled: false,
     outlined: false,
     color: null,
