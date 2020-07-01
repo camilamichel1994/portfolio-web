@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import SCREEN from '../../constants/screen'
 import TYPOGRAPHY from '../../constants/typography'
+import { Link } from 'react-router-dom'
 
 export const ProfileStyled = styled.div`
     display: flex;
@@ -90,4 +91,27 @@ export const Photo = styled.div`
     min-width: 88px;
     height: 88px;
     cursor: pointer;
+`
+
+export const ButtonRow = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+`
+
+export const ButtonRowWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`
+
+export const ButtonWrapper = styled.div`
+    margin-left: 10px;
+`
+
+export const LinkStyled = styled(Link)`
+    text-decoration: none;
+    color: inherit;
 `

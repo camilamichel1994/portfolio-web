@@ -1,15 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Input from '../Input'
-import Button from '../Button'
 import PanelItem from '../PanelItem'
 import * as icons from '@fortawesome/free-solid-svg-icons'
 import {
     ProfileTabStyled,
-    SearchAddWrapper,
-    AddPanelWrapper,
-    PanelArea,
-    LinkStyled,
 } from './ProfileTabStyled'
 
 const renderPanels = (panels, theme) => {
@@ -26,17 +20,7 @@ const renderPanels = (panels, theme) => {
 
 const ProfileTab = props => (
     <ProfileTabStyled theme={props.theme}>
-        <SearchAddWrapper>
-            <Input theme={props.theme} startIcon={icons['faSearch']} />
-            <AddPanelWrapper>
-                <LinkStyled to="/new-panel">
-                    <Button title="Add panel" theme={props.theme} icon={icons['faFolder']} />
-                </LinkStyled>
-            </AddPanelWrapper>
-        </SearchAddWrapper>
-        <PanelArea>
-            { renderPanels(props.panels, props.theme) }
-        </PanelArea>
+        { renderPanels(props.panels, props.theme) }
     </ProfileTabStyled>
 )
 

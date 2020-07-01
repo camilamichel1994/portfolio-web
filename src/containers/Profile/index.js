@@ -11,6 +11,8 @@ import ProfileTab from '../../components/ProfileTab'
 import ContactsTab from '../../components/ContactsTab'
 import PostsTab from '../../components/PostsTab'
 import Card from '../../components/Card'
+import Button from '../../components/Button'
+import { faShareAlt, faEllipsisV, faEdit, faFolder } from '@fortawesome/free-solid-svg-icons'
 import {
     ProfileStyled,
     SideWrapper,
@@ -23,6 +25,10 @@ import {
     PhotosRow,
     PhotosColumn,
     Photo,
+    ButtonRow,
+    ButtonRowWrapper,
+    ButtonWrapper,
+    LinkStyled,
 } from './ProfileStyled'
 
 const renderSelectedTab = (index, theme) => {
@@ -38,7 +44,7 @@ const renderSelectedTab = (index, theme) => {
     }
 }
 
-const renderPhotos = theme => {
+const renderPhotos = () => {
     return (
         <PhotosColumn>
             <PhotosRow>
@@ -65,6 +71,22 @@ const Profile = () => {
         <ProfileStyled theme={theme}>
             <ProfileWrapper>
                 <ProfileCard theme={theme} data={user} model={profileStyle} elevation={ELEVATION[elevationLevel]} />
+                <ButtonRow>
+                    <ButtonRowWrapper>
+                        <LinkStyled to="/new-panel">
+                            <Button theme={theme} title="Add panel" icon={faFolder} />
+                        </LinkStyled>
+                        <ButtonWrapper>
+                            <Button theme={theme} outlined title="Edit" icon={faEdit} />
+                        </ButtonWrapper>
+                    </ButtonRowWrapper>
+                    <ButtonRowWrapper>
+                        <Button theme={theme} outlined icon={faShareAlt} />
+                        <ButtonWrapper>
+                            <Button theme={theme} outlined icon={faEllipsisV} />
+                        </ButtonWrapper>
+                    </ButtonRowWrapper>
+                </ButtonRow>
                 <MainWrapper>
                     <Card theme={theme} elevation={ELEVATION[elevationLevel]}>
                         <Tabs>
@@ -82,7 +104,7 @@ const Profile = () => {
                 <QuickChat theme={theme} elevation={ELEVATION[elevationLevel]} />
                 <PhotosWrapper>
                     <Card theme={theme} elevation={ELEVATION[elevationLevel]} title="Photos">
-                        { renderPhotos(theme) }
+                        { renderPhotos() }
                     </Card>
                 </PhotosWrapper>
             </SideWrapper>

@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import TYPOGRAPHY from '../../constants/typography'
 import PROFILE from '../../constants/profile'
-import { COLORS, THEME_NAME } from '../../constants/theme'
 
 export const Gradient = styled.div`
     background-image: ${({theme}) => `linear-gradient(transparent, ${theme.BACKGROUND})`};

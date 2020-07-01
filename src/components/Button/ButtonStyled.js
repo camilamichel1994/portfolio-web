@@ -12,7 +12,7 @@ const getBackground = (color, disabled, outlined, theme) => {
 }
 
 const getColor = (color, disabled, outlined, theme) => {
-    if (outlined === 'true') return color ? FIELDS[color.toUpperCase()] : theme.PRIMARY
+    if (outlined.toString() === 'true') return color ? FIELDS[color.toUpperCase()] : theme.PRIMARY
     if (disabled) return theme.CARD_BACKGROUND
     return color ? FIELDS[color.toUpperCase()] : theme.CARD_BACKGROUND
 }
@@ -40,7 +40,11 @@ export const ButtonStyled = styled.div`
     background: ${({ color, disabled, outlined, theme }) => getBackground(color, disabled, outlined, theme)};
     padding: ${({ outlined, small, title, icon }) => getPadding(outlined, small, title, icon)};
     width: max-content;
-    border-radius: ${({ round }) => round ? '50px' : '5px'};
+    min-width: 15px;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    border-radius: ${({ round }) => round ? '50px' : '10px'};
     color: ${({ disabled, outlined, color, theme }) => getColor(color, disabled, outlined, theme)};
     font-weight: 500;
     cursor: pointer;
