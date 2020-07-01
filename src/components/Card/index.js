@@ -6,7 +6,7 @@ import {
 } from './CardStyled'
 
 const Card = props => (
-    <CardStyled theme={props.theme} elevation={props.elevation} height={props.height} spaced={props.spaced}>
+    <CardStyled theme={props.theme} elevation={props.elevation} height={props.height} spaced={props.spaced} color={props.backgroundColor} image={props.backgroundImage}>
         { props.title && <CardTitle theme={props.theme} spaced={props.spaced}>{props.title}</CardTitle> }
         { !!props.children && props.children }
     </CardStyled>
@@ -18,6 +18,8 @@ Card.propTypes = {
     title: PropTypes.string,
     height: PropTypes.string,
     spaced: PropTypes.bool,
+    backgroundColor: PropTypes.string,
+    backgroundImage: PropTypes.string,
 }
 
 Card.defaultProps = {

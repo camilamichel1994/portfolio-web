@@ -2,10 +2,17 @@ import styled from 'styled-components'
 import TYPOGRAPHY from '../../constants/typography'
 import { COLORS, THEME_NAME } from '../../constants/theme'
 
+const getBackground = (theme, color, image) => {
+    if (image) return `url(${image}) no-repeat center`
+    if (color) return color
+    return theme.CARD_BACKGROUND
+}
+
 export const CardStyled = styled.div`
     display: flex;
     flex-direction: column;
-    background: ${({theme}) => theme.CARD_BACKGROUND};
+    background: ${({ theme, color, image }) => getBackground(theme, color, image) };
+    background-size: cover;
     padding: ${({ spaced }) => spaced ? '0px' : '20px'};
     box-shadow: ${({elevation}) => elevation};
     border-radius: 10px;

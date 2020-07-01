@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import PROFILE from '../../constants/profile'
+import Card from '../Card'
 import {
-    ProfileCardStyled,
     Gradient,
     ProfileImage,
     ProfileImageMini,
@@ -18,9 +18,9 @@ import {
 const ProfileCard = props => {
     
     return (
-        <ProfileCardStyled elevation={props.elevation} theme={props.theme} image={props.data.backgroundImage.url}>
+        <Card elevation={props.elevation} spaced theme={props.theme} backgroundImage={props.data.backgroundImage.url}>
             { renderCard(props) }
-        </ProfileCardStyled>
+        </Card>
     )
 }
 
