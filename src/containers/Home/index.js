@@ -1,6 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { getTheme } from '../../reducers/theme-reducer'
+import PostsTab from '../../components/PostsTab'
+import THEME from   '../../constants/theme'
 import {
     HomeStyled
 } from './HomeStyled'
@@ -10,7 +12,9 @@ const Home = () => {
 
     return (
         <HomeStyled theme={theme}>
-            hello home
+            A Camila está mexendo aqui!
+
+            <PostsTab  theme={THEME.LIGHT} />
         </HomeStyled>
     )
 }
